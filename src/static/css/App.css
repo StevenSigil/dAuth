@@ -1,0 +1,80 @@
+body {
+  background-color: #222831;
+  overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 100vh;
+  max-width: 100vw;
+  padding: 0;
+}
+
+.App-logo {
+  height: 50px;
+  width: 50px;
+  pointer-events: none;
+  margin-right: 0;
+}
+.App-link {
+  color: #61dafb;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Welcome {
+  color: #eeeeee;
+  text-align: center;
+  font-size: 4.5em;
+  margin-top: 2rem;
+}
+
+.authform-outer {
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  color: #eeeeee;
+}
+.authform-inner {
+  background-color: #393e46;
+  width: 100%;
+  padding: 15px;
+  margin: auto;
+}
+.authform-inner h2 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+.authform-inner .col-md-6 {
+  padding: 0 10px;
+}
+.authform-inner .form-control {
+  position: relative;
+  box-sizing: border-box;
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+}
+.authform-inner .form-control:focus {
+  z-index: 2;
+}
+.authform-inner button {
+  margin-top: 0.5rem;
+}
+.loginform-inner {
+  max-width: 330px;
+}
+.register-form {
+  max-width: 660px;
+}
