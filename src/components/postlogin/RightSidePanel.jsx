@@ -11,7 +11,7 @@ function RightSidePanel(props) {
   // const activeTopicID = props.activeTopicID;
   // const [getFriends, setGetFriends] = useState(false);
   const getFriends = props.getFriends;
-  const setGetFriends = props.setGetFriends;
+  const setGetFriends = props.setGetFriends ? props.setGetFriends : null;
 
   const [userProfiles, setUserProfiles] = useState([]);
   const [usersFriends, setUsersFriends] = useState([]);

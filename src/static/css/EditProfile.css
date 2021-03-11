@@ -1,0 +1,212 @@
+/* All */
+.editProfile-main {
+  display: block;
+  flex-wrap: wrap;
+  padding: 5px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.editProfile-main::-webkit-scrollbar {
+  display: none;
+}
+.editProfile-main > .container-fluid {
+  padding-bottom: 1rem;
+}
+.row2-outerdiv-ep {
+  position: relative;
+  max-height: 75vh;
+  top: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: #393e46;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.row2-outerdiv-ep h2 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.row2-innerdiv-ep {
+  display: inline-block;
+  position: relative;
+  max-height: 60vh;
+  width: 100%;
+  height: inherit;
+  margin: auto;
+  bottom: 0;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-left: 2px solid #222831;
+  border-right: 2px solid #222831;
+}
+.row2-innerdiv-ep::-webkit-scrollbar {
+  display: none;
+}
+.row2-innerdiv-ep > .inner-map-centered-cards {
+  width: 90%;
+  margin-bottom: 1vh;
+}
+.row2-innerdiv-ep div {
+  margin: auto;
+}
+
+.img-container-ep {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  height: 100%;
+}
+.image-card-ep {
+  width: 90%;
+  margin: auto;
+}
+.image-card-ep > .card-header {
+  text-align: center;
+  padding: 2rem;
+}
+.profile-image-editProfile {
+  max-height: 10rem;
+  width: auto;
+  box-shadow: 8px 8px 8px #29292b, -10px 10px 15px #1b1c1f;
+}
+
+.custom-lgButton {
+  margin: 0 auto;
+  width: 100%;
+}
+
+.formWrapper-ep {
+  background-color: #222831;
+  width: 90%;
+  height: inherit;
+  margin: auto;
+  padding: 2%;
+}
+.formWrapper-ep > .btn {
+  margin: 0 auto 1rem auto;
+}
+
+#edit-profile-form {
+  width: 100%;
+  margin: auto;
+  padding: 2%;
+}
+#edit-profile-form > .form-group {
+  margin: 0.5rem auto;
+  width: 90%;
+}
+#edit-profile-form > .form-group > .form-control {
+  /* height: 50%; */
+  width: 95%;
+  margin: auto;
+  background-color: rgb(230, 230, 230);
+}
+
+/* .custom-lgButton {
+    margin: 2rem auto;
+    width: 100%;
+  } */
+
+/* .head-div {
+    width: 90%;
+    height: 100%;
+    background-color: #222831;
+    display: flex;
+    margin: auto;
+    justify-content: flex-end;
+  } */
+/* .head-div > .btn {
+    margin: 1rem;
+  } */
+/* .row2-col-editProfile {
+    overflow: hidden;
+    display: flex;
+  } */
+/* .editProfile-image-container {
+    background-color: #222831;
+    height: 75vh;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-left: 1rem;
+    margin-bottom: 13rem;
+  } */
+
+/* .area2-ep {
+    display: inline-block;
+    width: 95%;
+    height: 75vh;
+    min-height: 11rem;
+    background-color: #222831;
+    flex-grow: 1;
+    margin: 0 1rem;
+    text-align: center;
+  } */
+/* .area2-ep h2 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  } */
+/* .area2-inner-ep {
+    display: block;
+    height: 87%;
+    min-height: 11rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+  } */
+/* .area2-inner-ep-f {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  } */
+
+/* .inner-map-centered-cards-editProfile {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20rem;
+  } */
+/* .inner-map-centered-cards-editProfile > .card {
+    margin: 0;
+    width: 20rem;
+  } */
+
+/*.row2-editProfile {
+    text-align: start;
+  }*/
+/*.row2-editProfile h3 {
+    margin-top: 1rem;
+    margin-bottom: 1.2rem;
+    text-align: center;
+  }*/
+/* .editProfile-image-container > .row {
+    margin-top: 1rem;
+  } */
+
+/* .editProfile-form-container {
+    max-height: 75vh;
+    background-color: #222831;
+    margin-bottom: 13rem;
+    padding: 0 1rem;
+  } */
+
+/* .topic-title-container {
+    display: inline-flex;
+    width: inherit;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    padding-top: 0.3rem;
+  }
+  .topic-title-container > .btn {
+    position: absolute;
+    display: flex;
+    right: 8%;
+    height: inherit;
+    width: inherit;
+  } */

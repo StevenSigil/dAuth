@@ -19,10 +19,8 @@ import RemoveFriendModal from "./modals/RemoveFriendModal";
 import UserSearchConfirmModal from "./modals/UserSearchConfirmModal";
 
 function UsersPublicProfile(props) {
-  // const userID = props.userID;
   const currentUsersUsername = props.currentUsersUsername;
 
-  // const getUsersFriends = props.getUsersFriends;
   const showTopicDetails = props.showTopicDetails;
   const setWindowIsShowing = props.setWindowIsShowing;
   const setActiveTopicID = props.setActiveTopicID;
@@ -148,11 +146,18 @@ function UsersPublicProfile(props) {
     }
   }, [viewingUserID, userDetails]);
 
+  function handleEditProfileButtonPress() {
+    window.location = "/" + curUserID + "/edit-profile";
+  }
+
   function ButtonChanger() {
     if (activeWindow === "currentUser") {
       // Edit button - only for current user
       return (
-        <Button className="orange-primary-btn" onClick={props.editProfile}>
+        <Button
+          className="orange-primary-btn"
+          onClick={handleEditProfileButtonPress}
+        >
           <EditPencil />
         </Button>
       );

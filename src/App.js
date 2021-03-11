@@ -17,6 +17,7 @@ import TopicDetails from "./components/postlogin/TopicDetails";
 
 import Main from "./components/postlogin/Main";
 import UsersPublicProfile from "./components/postlogin/UsersPublicProfile";
+import EditProfile from "./components/postlogin/EditProfile";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -42,6 +43,8 @@ function App() {
           <Route path={"/topics/:id"} component={TopicDetails} />
 
           <Route path={"/:userID/public"} component={UsersPublicProfile} />
+
+          <Route path={"/:userID/edit-profile"} component={EditProfile} />
         </Switch>
       </div>
     </BrowserRouter>
