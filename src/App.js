@@ -41,7 +41,7 @@ function App() {
 
           <Route path={"/topics/:id"} component={TopicDetails} />
 
-          <Route path={"/:user/public"} component={UsersPublicProfile} />
+          <Route path={"/:userID/public"} component={UsersPublicProfile} />
         </Switch>
       </div>
     </BrowserRouter>

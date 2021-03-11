@@ -30,8 +30,9 @@ function UsersCards(props) {
   }, [activeWindow]);
 
   function handleCardClick(id) {
-    handleOtherUserClicked(id);
+    // handleOtherUserClicked(id);
     if (activeWindow === "UserSearchModal") props.resetModal();
+    window.location = "/" + id + "/public";
   }
 
   function handleManageButtonClick(id) {

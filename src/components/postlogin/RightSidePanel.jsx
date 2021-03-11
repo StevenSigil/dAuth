@@ -9,6 +9,9 @@ import "../../static/css/RightSidePanel.css";
 
 function RightSidePanel(props) {
   // const activeTopicID = props.activeTopicID;
+  // const [getFriends, setGetFriends] = useState(false);
+  const getFriends = props.getFriends;
+  const setGetFriends = props.setGetFriends;
 
   const [userProfiles, setUserProfiles] = useState([]);
   const [usersFriends, setUsersFriends] = useState([]);
@@ -22,6 +25,15 @@ function RightSidePanel(props) {
       })
       .catch((error) => console.log(error));
   }, [setUsersFriends]);
+
+  useEffect(() => {
+    if (getFriends) {
+      window.location.reload()
+    }
+    return () => {
+      setGetFriends(false);
+    }
+  }, [getFriends, setGetFriends])
 
   // dynamic styling
   const [area2Height, setArea2Height] = useState("100%"); // maybe a collapse instead of slicing in half?

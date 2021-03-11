@@ -22,7 +22,7 @@ function NavBar(props) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showUserSearchModal, setShowUserSearchModal] = useState(false);
 
-  const [username, setUsername] = useState("");
+  const [userID, setUserID] = useState("");
 
   useEffect(() => {
     getAndSetToken();
@@ -30,7 +30,7 @@ function NavBar(props) {
       .get("users/basic_user_details/")
       .then((response) => {
         console.log(response);
-        setUsername(response.data.username);
+        setUserID(response.data.pk);
       })
       .catch((error) => console.log(error));
   }, []);
@@ -38,7 +38,7 @@ function NavBar(props) {
   function handleSelect(eventKey) {
     if (eventKey === "profile") {
       // props.profile();
-      window.location = "/" + username + "/public";
+      window.location = "/" + userID + "/public";
 
       // } else if (eventKey === "logout") {
       //   setShowLogoutModal(true);

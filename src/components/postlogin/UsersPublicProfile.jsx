@@ -10,23 +10,26 @@ import { ReactComponent as EditPencil } from "../../static/svg/pencil-square.svg
 import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
 
 import UsersCards from "./card_groups/UsersCards";
-// import RemoveFriendModal from "../modals/RemoveFriendModal";
+
 import TopicMdCards from "./card_groups/TopicMdCards";
 import LeftSidePanel from "./LeftSidePanel";
 import RightSidePanel from "./RightSidePanel";
 import NavBar from "./NavBar";
-// import UserSearchConfirmModal from "../modals/UserSearchConfirmModal";
+import RemoveFriendModal from "./modals/RemoveFriendModal";
+import UserSearchConfirmModal from "./modals/UserSearchConfirmModal";
 
 function UsersPublicProfile(props) {
   // const userID = props.userID;
   const currentUsersUsername = props.currentUsersUsername;
 
-  const getUsersFriends = props.getUsersFriends;
+  // const getUsersFriends = props.getUsersFriends;
   const showTopicDetails = props.showTopicDetails;
   const setWindowIsShowing = props.setWindowIsShowing;
   const setActiveTopicID = props.setActiveTopicID;
 
-  const [userID, setUserID] = useState("");
+  const [viewingUserID, setViewingUserID] = useState("");
+  const [curUserID, setCurUserID] = useState("");
+  const [curUserFriends, setCurUserFriends] = useState([]);
 
   const [userDetails, setUserDetails] = useState(null);
   const [activeWindow, setActiveWindow] = useState("otherUser");
@@ -39,36 +42,66 @@ function UsersPublicProfile(props) {
 
   const [showUserConfirmModal, setShowUserConfirmModal] = useState(false);
   const [showUserManagerModal, setShowUserManagerModal] = useState(false);
-getAndSetToken();
+
+  getAndSetToken();
+
   useEffect(() => {
-    
+    setViewingUserID(props.match.params.userID);
+  }, []);
+
+  useEffect(() => {
+    // Sets the signed in user ID to determine if the page is the users or another users profile.
     axiosInstance
       .get("users/basic_user_details/")
       .then((response) => {
         console.log(response);
-        setUserID(response.data.pk);
+        setCurUserID(response.data.pk);
       })
       .catch((error) => console.log(error));
+  }, [setCurUserID]);
 
+  useEffect(() => {
     // Retrieves the information for the user who's profile is to be displayed.
-    // if (userID !== "") {
+    if (viewingUserID) {
+      axiosInstance
+        .post("/profiles/public/other_user_public_profile/", {
+          id: viewingUserID,
+        })
+        .then((response) => {
+          console.log(response);
+          setUserDetails(response.data);
+          setFriendsList(response.data.friends);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [viewingUserID, setUserDetails, setFriendsList]);
+
+  useEffect(() => {
+    // Retrieves the current users friends list to compare to viewing users friends list.
     axiosInstance
-      .post("/profiles/public/other_user_public_profile/", { id: userID })
+      .get("profiles/public/users_friends/")
       .then((response) => {
         console.log(response);
-        setUserDetails(response.data);
-        setFriendsList(response.data.friends);
+        setCurUserFriends(response.data);
       })
       .catch((error) => console.log(error));
+  }, [setCurUserFriends]);
 
-    axiosInstance
-      .post("/topics/subscriptions/condensed_topics/", { id: userID })
-      .then((response) => {
-        console.log(response);
-        setSubscribedTopics(response.data);
-      })
-      .catch((error) => console.log(error));
+  useEffect(() => {
+    // Retrieves the Topics a user is subscribed to
+    if (viewingUserID) {
+      axiosInstance
+        .post("/topics/subscriptions/condensed_topics/", { id: viewingUserID })
+        .then((response) => {
+          console.log(response);
+          setSubscribedTopics(response.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [viewingUserID, setSubscribedTopics]);
 
+  useEffect(() => {
+    // Retrieves the public topics before filtering to get the topics a user has made
     axiosInstance
       // This might be better to do on the backend instead of filtering ALL public topics.
       .get("/topics/public/")
@@ -78,7 +111,7 @@ getAndSetToken();
       })
       .catch((error) => console.log(error));
     // }
-  }, [userID, getUsersFriends]);
+  }, [setPublicTopics]);
 
   function prepUserMadeTopics() {
     // This might be better to do on the backend instead of filtering ALL public topics.
@@ -90,10 +123,9 @@ getAndSetToken();
 
   function handleAddFriend() {
     axiosInstance
-      .post("profiles/public/add_friend/", { id: userID })
+      .post("profiles/public/add_friend/", { id: viewingUserID })
       .then((response) => {
         console.log(response);
-        getUsersFriends();
         setShowUserConfirmModal(true);
       })
       .catch((error) => console.log(error));
@@ -105,37 +137,40 @@ getAndSetToken();
     setWindowIsShowing(true);
   }
 
-  // checks whether or not the signed in user is the user who's card/nav. link clicked.
   useEffect(() => {
+    // checks whether or not the signed in user is the user who's card/nav. link clicked.
     if (userDetails) {
-      if (currentUsersUsername === userDetails.username) {
+      if (viewingUserID === curUserID) {
         setActiveWindow("currentUser");
       } else {
         setActiveWindow("otherUser");
       }
     }
-  }, [currentUsersUsername, userDetails]);
+  }, [viewingUserID, userDetails]);
 
   function ButtonChanger() {
     if (activeWindow === "currentUser") {
+      // Edit button - only for current user
       return (
         <Button className="orange-primary-btn" onClick={props.editProfile}>
           <EditPencil />
         </Button>
       );
-    } else if (friendsList.some((f) => f.username === currentUsersUsername))
+    } else if (friendsList.some((f) => f.user_id === curUserID)) {
       return (
         <p>
           You are friends <CheckMarkSVG />
         </p>
       );
-    else
+    } else
       return (
         <Button className="orange-primary-btn" onClick={handleAddFriend}>
           Add friend?
         </Button>
       );
   }
+
+  const [getFriends, setGetFriends] = useState(false);
 
   return userDetails ? (
     <>
@@ -301,19 +336,23 @@ getAndSetToken();
                   </Row>
                 </Container>
 
-                {/* <RemoveFriendModal
-        getUsersFriends={getUsersFriends}
-        show={showUserManagerModal}
-        setShow={setShowUserManagerModal}
-        friendCardUserID={friendCardUserID}
-      /> */}
-                {/* <UserSearchConfirmModal
-        show={showUserConfirmModal}
-        hide={() => setShowUserConfirmModal(false)}
-      /> */}
+                <RemoveFriendModal
+                  getUsersFriends={() => setGetFriends(true)}
+                  show={showUserManagerModal}
+                  setShow={setShowUserManagerModal}
+                  friendCardUserID={friendCardUserID}
+                />
+                <UserSearchConfirmModal
+                  show={showUserConfirmModal}
+                  hide={() => setShowUserConfirmModal(false)}
+                  setGetFriends={setGetFriends}
+                />
               </div>
             </Col>
-            <RightSidePanel />
+            <RightSidePanel
+              setGetFriends={setGetFriends}
+              getFriends={getFriends}
+            />
           </Row>
         </Container>
       </div>
