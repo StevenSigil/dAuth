@@ -30,9 +30,9 @@ function RightSidePanel(props) {
     if (getFriends) {
       window.location.reload()
     }
-    return () => {
-      setGetFriends(false);
-    }
+    // return () => {
+    //   setGetFriends(false);
+    // }
   }, [getFriends, setGetFriends])
 
   // dynamic styling

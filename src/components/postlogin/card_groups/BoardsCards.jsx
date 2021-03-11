@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { Card, Col, Row } from "react-bootstrap";
-// import DeleteBoardModal from "../modals/DeleteBoardModal";
-import XSquareButton from '../../svg-components/XSquareButton'
+
+import XSquareButton from "../../svg-components/XSquareButton";
+
+import DeleteBoardModal from "../modals/DeleteBoardModal";
 
 function BoardsCards(props) {
   // Standardizes and reuses a series of cards, formatted for basic Board info.
   const boards = props.boards;
+
   const [showDeleteBoardModal, setShowDeleteBoardModal] = useState(false);
+
   const checkIfUserIsAdmin = props.checkIfUserIsAdmin
     ? props.checkIfUserIsAdmin
     : () => {
-        return false;
+        return true;
       };
 
   function handleBoardClicked(obj) {
-    props.setActiveBoard(obj);
-    props.showPosts();
+    window.location = "/board/" + obj.id;
   }
 
   function TrashButton() {
@@ -48,11 +51,12 @@ function BoardsCards(props) {
                   </Row>
                 </Card.Header>
               </Card>
-              {/* <DeleteBoardModal
+
+              <DeleteBoardModal
                 show={showDeleteBoardModal}
                 setShow={setShowDeleteBoardModal}
                 activeBoard={board}
-              /> */}
+              />
             </div>
           );
         })}

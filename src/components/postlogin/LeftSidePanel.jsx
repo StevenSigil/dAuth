@@ -4,14 +4,13 @@ import { Row, Col, Card, Collapse, Container, Button } from "react-bootstrap";
 import axiosInstance from "../../utils/axiosAPI";
 
 import BoardsCards from "./card_groups/BoardsCards";
-// import CreateTopicModal from "../modals/CreateTopicModal";
+import CreateTopicModal from "./modals/CreateTopicModal";
 import TopicsLeftNavCards from "./card_groups/TopicsLeftNavCards";
 
 import "../../static/css/LeftSidePanel.css";
 
 function LeftSidePanel(props) {
-  //   const activeTopicID = props.activeTopicID;
-  //   const setActiveTopicID = props.setActiveTopicID;
+  const [activeTopicID, setActiveTopicID] = useState("");
 
   const [open, setOpen] = useState(false);
   const [boards, setBoards] = useState(null);
@@ -30,19 +29,19 @@ function LeftSidePanel(props) {
       .catch((error) =>
         console.log("Error retrieving the User's Topics.\n", error)
       );
-  }, [setTopics])
+  }, [setTopics]);
 
-  //   useEffect(() => {
-  //     if (open && activeTopicID) {
-  //       axiosInstance
-  //         .get("topics/boards-condensed/" + activeTopicID + "/")
-  //         .then((response) => {
-  //           console.log(response);
-  //           setBoards(response.data.boards);
-  //         })
-  //         .catch((error) => console.log(error));
-  //     } else setBoards(null);
-  //   }, [open, activeTopicID]);
+  useEffect(() => {
+    if (open && activeTopicID) {
+      axiosInstance
+        .get("topics/boards-condensed/" + activeTopicID + "/")
+        .then((response) => {
+          console.log(response);
+          setBoards(response.data.boards);
+        })
+        .catch((error) => console.log(error));
+    } else setBoards(null);
+  }, [open, activeTopicID]);
 
   return (
     <>
@@ -73,17 +72,14 @@ function LeftSidePanel(props) {
               </Row>
 
               <div className="area2-inner-lsp">
-              <TopicsLeftNavCards
-                // user={props.user}
-                // setActiveTopicName={setActiveTopicName}
-                // setActiveTopicID={setActiveTopicID}
-                // showTopicDetails={props.showTopicDetails}
-                // topics={props.topics}
-                topics={topics}
-                setOpen={setOpen}
-                open={open}
-              />
-            </div>
+                <TopicsLeftNavCards
+                  setActiveTopicName={setActiveTopicName}
+                  setActiveTopicID={setActiveTopicID}
+                  topics={topics}
+                  setOpen={setOpen}
+                  open={open}
+                />
+              </div>
             </div>
           </div>
         </Collapse>
@@ -103,12 +99,12 @@ function LeftSidePanel(props) {
               </Row>
 
               <div className="area2-inner-lsp">
-                {/* <BoardsCards
-                showPosts={props.showPosts}
-                topicID={activeTopicID}
-                setActiveBoard={props.setActiveBoard}
-                boards={boards}
-              /> */}
+                <BoardsCards
+                  // showPosts={props.showPosts}
+                  topicID={activeTopicID}
+                  // setActiveBoard={props.setActiveBoard}
+                  boards={boards}
+                />
 
                 <Card
                   className="left-cards cardColor"
@@ -128,13 +124,13 @@ function LeftSidePanel(props) {
         </Collapse>
       </Col>
 
-      {/* <CreateTopicModal
+      <CreateTopicModal
         show={showCreateTopicModal}
         setShow={setShowCreateTopicModal}
         usersProfile={props.usersProfile}
         setActiveTopicID={props.setActiveTopicID}
         getProfileAndTopics={props.getProfileAndTopics}
-      /> */}
+      />
     </>
   );
 }

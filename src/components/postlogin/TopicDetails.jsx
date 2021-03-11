@@ -73,7 +73,7 @@ function TopicDetails(props) {
         console.log(response);
         setShowSubscribeModal(true);
         topicAPI();
-        props.getProfileAndTopics(true);
+        // props.getProfileAndTopics(true);
       })
       .catch((error) => console.log(error));
   }

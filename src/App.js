@@ -2,9 +2,7 @@ import React, { useState } from "react";
 import {
   Switch,
   Route,
-  Redirect,
   BrowserRouter,
-  useParams,
 } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,6 +16,7 @@ import TopicDetails from "./components/postlogin/TopicDetails";
 import Main from "./components/postlogin/Main";
 import UsersPublicProfile from "./components/postlogin/UsersPublicProfile";
 import EditProfile from "./components/postlogin/EditProfile";
+import Posts from "./components/postlogin/Posts";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,6 +40,8 @@ function App() {
           </Route>
 
           <Route path={"/topics/:id"} component={TopicDetails} />
+
+          <Route path={"/board/:boardID"} component={Posts} />
 
           <Route path={"/:userID/public"} component={UsersPublicProfile} />
 

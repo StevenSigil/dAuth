@@ -1,0 +1,185 @@
+/* All - Main */
+.postsMain {
+  display: block;
+  flex-wrap: wrap;
+  padding: 5px;
+  position: relative;
+  min-height: 90vh;
+  background-color: inherit;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.postsMain::-webkit-scrollbar {
+  display: none;
+}
+
+/* window title - heading */
+.postWindow-heading {
+  max-width: 95%;
+  text-align: center;
+  padding-bottom: 0.5rem;
+  background-color: #222831;
+  /* border-bottom: 0.2rem solid #393e46; */
+}
+.postWindow-heading h1 {
+  padding-bottom: 1rem;
+  margin: 0;
+  border-bottom: 0.2rem solid #393e46;
+  /* #393e46; */
+}
+
+.row2-outercontainer-posts {
+  padding: 0.5rem 2rem;
+  height: 75vh;
+  background-color: #222831;
+
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  /* Modify width here!! */
+  max-width: 95%;
+}
+.row2-outercontainer-posts::-webkit-scrollbar {
+  display: none;
+}
+
+/* Shared userImage style */
+.posts-imageCol {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0.75rem;
+  min-height: 5vh;
+  margin: 0 0.75rem;
+}
+.posts-imageCol img {
+  height: inherit;
+  width: inherit;
+}
+
+/* currentUser's single posts */
+
+/* .singlePost-mainRow-currentUser {
+    max-width: 90%;
+    margin: 0.5rem 0 1rem auto;
+    border-top: 1px solid #b55400;
+    border-bottom: 1px solid #b55400;
+  } */
+.posts-postCol-currentUser {
+  height: auto;
+  max-width: 80%;
+  margin: auto 1rem auto auto;
+}
+.posts-postCol-currentUser > .row {
+  padding: 0.25rem;
+  display: flex;
+  justify-content: flex-end;
+}
+.posts-postCol-currentUser p {
+  margin: 0;
+}
+.postHeader-currentUser > .row {
+  padding-bottom: 0.25rem;
+  display: flex;
+  justify-content: flex-end;
+  /* margin-right: 2rem; */
+}
+.postMessage-row-currentUser {
+  border-top: 1px dashed #686d74;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+.postMessage-row-currentUser p {
+  margin-right: 2rem;
+}
+
+/* otherUser's single posts */
+
+/* .singlePost-mainRow-otherUser {
+    max-width: 90%;
+    margin: 0.5rem auto 0 0;
+    border-top: 1px solid #b55400;
+    border-bottom: 1px solid #b55400;
+  } */
+.posts-postCol-otherUser {
+  height: auto;
+  max-width: 80%;
+  margin: auto auto auto 1rem;
+}
+.posts-postCol-otherUser > .row {
+  padding: 0.25rem;
+  display: flex;
+  /* align-items: flex-end; */
+  justify-content: flex-start;
+}
+.posts-postCol-otherUser p {
+  margin: 0;
+}
+.postHeader-otherUser > .row {
+  padding-bottom: 0.25rem;
+  display: flex;
+  /* align-items: flex-end; */
+  justify-content: flex-start;
+}
+.postMessage-row-otherUser {
+  border-top: 1px dashed #686d74;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* margin-left: 2rem; */
+}
+.postMessage-row-otherUser p {
+  margin-left: 2rem;
+}
+
+/* .singlePost-mainRow-otherUser {
+    max-width: 90%;
+    margin: 0.5rem auto 1rem 0;
+    border-top: 1px solid #b55400;
+    border-bottom: 1px solid #b55400;
+  }
+  .singlePost-mainRow-currentUser {
+    max-width: 90%;
+    margin: 0.5rem 0 1rem auto;
+    border-top: 1px solid #b55400;
+    border-bottom: 1px solid #b55400;
+  } */
+
+.singlePost-mainRow-otherUser {
+  max-width: 90%;
+  margin: 0.5rem auto 0 0;
+  border-top: 1px solid #b55400;
+}
+.singlePost-mainRow-currentUser {
+  max-width: 90%;
+  margin: 0.5rem 0 0 auto;
+  border-top: 1px solid #b55400;
+}
+
+/* user is not subscribed alt display */
+.userNotSubscribed-div {
+  text-align: center;
+  height: inherit;
+  margin-top: 1rem;
+}
+.userNotSubscribed-div button {
+  margin-top: 1rem;
+}
+
+/* Submit area */
+.postSubmitRow input {
+  max-width: 90%;
+}
+.postSubmitRow {
+  padding-top: 1rem;
+}
+.postSubmitRow div {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  padding: 0 5px;
+}
