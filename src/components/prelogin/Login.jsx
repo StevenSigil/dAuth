@@ -5,7 +5,10 @@ import axiosInstance, {
 } from "../../utils/axiosAPI";
 import { Form, Button } from "react-bootstrap";
 
-function Login() {
+function Login(props) {
+  if (props.id) {
+    console.log(props.id);
+  }
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -21,7 +24,7 @@ function Login() {
         if (response.status === 200) {
           getAndSetToken();
           if (checkForToken) {
-            window.location = "/landing"; // CHANGE TO MAIN WHEN SET
+            window.location = "/main"; // CHANGE TO MAIN WHEN SET
           }
         } else {
           setEmail("");

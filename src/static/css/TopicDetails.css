@@ -1,0 +1,127 @@
+.top-heading {
+  text-align: center;
+}
+.editButton-col-td {
+  height: initial;
+  display: flex;
+  align-items: center;
+  justify-content: baseline;
+  padding: 0;
+}
+.editButton-col-td button {
+  /* margin-left: auto;
+    margin-right: auto; */
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+.boards-outerdiv-td {
+  position: relative;
+  max-height: 75vh;
+  top: 0;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: #393e46;
+  text-align: center;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.boards-outerdiv-td h2 {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-bottom: 10px;
+}
+.boards-outerdiv-td h4 {
+  padding-left: 1.5rem;
+  text-align: start;
+}
+
+.boards-innerdiv-td3 {
+  /* display: inline-block; */
+  /* position: relative; */
+  max-height: 60vh;
+  height: inherit;
+  /* min-width: 100%; */
+  width: inherit;
+  margin: auto;
+  bottom: 0;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  border-left: 2px solid #222831;
+  border-right: 2px solid #222831;
+}
+.boards-innerdiv-td3::-webkit-scrollbar {
+  display: none;
+}
+
+.boards-innerdiv-td3 > .inner-map-topicCards {
+  padding: auto;
+  margin: auto;
+  width: 90%;
+}
+
+.boards-innerdiv-td3 > .UsersCards-outer-div {
+  padding: auto;
+  margin: auto;
+  max-width: 90%;
+}
+.boards-innerdiv-td3 > .UsersCards-outer-div > .inner-map-centered-cards {
+  margin: auto auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.removeBoard-outerCol {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.removeBoard-outerCol button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 12px;
+}
+
+/* .boards-outerdiv-td {
+    display: block;
+    align-items: center;
+    justify-content: center;
+    background-color: #222831;
+    max-height: 90%;
+    text-align: center;
+  } */
+/* .boards-innerdiv-td2 {
+    width: inherit;
+    max-height: 68vh;
+    padding-top: 1rem;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .boards-innerdiv-td2::-webkit-scrollbar {
+    display: none;
+  }
+  .boards-innerdiv-td2 > .UsersCards-outer-div {
+    margin-left: auto;
+    margin-right: auto;
+    width: 18rem;
+  }
+  .boards-innerdiv-td2
+    > .UsersCards-outer-div
+    > .inner-map-centered-cards
+    > .card {
+    margin: 0;
+    min-width: 105%;
+  }
+  .boards-innerdiv-td2
+    > .UsersCards-outer-div
+    > .inner-map-centered-cards
+    > .card
+    > .lg-card-header {
+    padding: 12px 20px;
+  } */

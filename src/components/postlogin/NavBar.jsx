@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Nav,
   Navbar,
@@ -8,7 +8,7 @@ import {
   NavLink,
 } from "react-bootstrap";
 
-import axiosInstance from "../../utils/axiosAPI";
+import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
 
 // import UserSearchModal from "../modals/UserSearchModal";
 // import LogoutModal from "../modals/LogoutModal";
@@ -22,27 +22,32 @@ function NavBar(props) {
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showUserSearchModal, setShowUserSearchModal] = useState(false);
 
-  var token = sessionStorage.getItem("Token");
-  if (token) {
-    axiosInstance.defaults.headers.common["Authorization"] = "Token " + token;
-  } else {
-    token = sessionStorage.getItem("Token");
-    console.log(token);
-  }
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    getAndSetToken();
+    axiosInstance
+      .get("users/basic_user_details/")
+      .then((response) => {
+        console.log(response);
+        setUsername(response.data.username);
+      })
+      .catch((error) => console.log(error));
+  }, []);
 
   function handleSelect(eventKey) {
     if (eventKey === "profile") {
       // props.profile();
-      window.location = "profile"
+      window.location = "/" + username + "/public";
 
-    // } else if (eventKey === "logout") {
-    //   setShowLogoutModal(true);
-    // } else if (eventKey === "public-topics") {
-    //   props.publicTopics();
-    // } else if (eventKey === "user-search") {
-    //   setShowUserSearchModal(true);
-    // } else if (eventKey === "topic-create") {
-    //   setShowCreateTopicModal(true);
+      // } else if (eventKey === "logout") {
+      //   setShowLogoutModal(true);
+      // } else if (eventKey === "public-topics") {
+      //   props.publicTopics();
+      // } else if (eventKey === "user-search") {
+      //   setShowUserSearchModal(true);
+      // } else if (eventKey === "topic-create") {
+      //   setShowCreateTopicModal(true);
     }
   }
 
@@ -61,7 +66,7 @@ function NavBar(props) {
   }
 
   return (
-    <Navbar variant="dark" expand="lg">
+    <Navbar className="main-nav" variant="dark" expand="lg">
       <Container fluid style={{ display: "flex", alignItems: "flex-start" }}>
         <Navbar.Brand>d-Auth</Navbar.Brand>
 

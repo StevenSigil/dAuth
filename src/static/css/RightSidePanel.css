@@ -1,0 +1,98 @@
+/* Right side cards */
+.rightSidePanel-inner-div {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 1%;
+    min-height: inherit;
+    width: 95%;
+  
+    /* border: 2px solid white; */
+  }
+  
+  .area2-rsp1 {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 49%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: #393e46;
+    text-align: center;
+  
+    /* border: 2px solid blue; */
+  }
+  
+  .area2-rsp1 > .container {
+    background-color: #222831;
+    display: flex;
+    max-width: 90%;
+    min-height: 10vh;
+    margin: 2% auto 0.75rem auto;
+    /* padding-top: 5%;
+    padding-bottom: 5%; */
+    border-bottom: 1px solid #b55400;
+    /* border-top: 1px solid #b55400; */
+  }
+  .area2-rsp1 h2 {
+    display: block;
+    margin: auto;
+  }
+  
+  .area2-rsp2 {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: #393e46;
+    text-align: center;
+    /* border: 2px solid blue; */
+  }
+  .area2-rsp2 > .container {
+    background-color: #222831;
+    display: flex;
+    max-width: 90%;
+    min-height: 10vh;
+    margin: 2% auto 0.75rem auto;
+    /* padding-top: 5%;
+    padding-bottom: 5%; */
+    border-bottom: 1px solid #b55400;
+    border-top: 1px solid #b55400;
+  }
+  .area2-rsp2 > .container h2 {
+    display: block;
+    margin: auto;
+  }
+  
+  .area2-inner-rsp {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 90%;
+    right: 0;
+    padding-bottom: 10rem;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    /* border: 2px solid greenyellow; */
+  }
+  .area2-inner-rsp::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .area2-inner-rsp div {
+    margin-left: auto;
+    margin-right: auto;
+    border-left: 1px solid #222831;
+    border-right: 1px solid #222831;
+  }
+  
+  .lg-card-header {
+    padding: 6px 10px 6px 10px;
+    margin: 0;
+  }
+  

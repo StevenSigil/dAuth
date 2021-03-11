@@ -1,0 +1,128 @@
+.leftSidePanel-inner-div {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 1%;
+  min-height: inherit;
+  width: 95%;
+
+  /* border: 2px solid white; */
+}
+
+.area2-lsp {
+  /* display: inline-block; */
+  position: absolute;
+  /* max-height: 98vh; */
+  min-height: 100%;
+  top: 0;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: #393e46;
+  text-align: center;
+  /* border: 2px solid blue; */
+}
+.area2-lsp > .row {
+  background-color: #222831;
+  display: flex;
+  height: inherit;
+  width: 90%;
+  margin: 2% auto 0.75rem auto;
+  padding-top: 5%;
+  padding-bottom: 0;
+  border-bottom: 1px solid #b55400;
+  border-top: 1px solid #b55400;
+  align-items: center;
+  justify-content: center;
+}
+.area2-lsp > .row h2 {
+  display: block;
+  margin-bottom: 5%;
+}
+.area2-lsp > .row button {
+  margin-bottom: 2%;
+  font-size: smaller;
+}
+.area2-lsp > .row em {
+  margin-bottom: 5%;
+}
+
+.area2-inner-lsp {
+  display: inline-block;
+  position: relative;
+  /* max-height: inherit; */
+  /* min-height: 84vh; */
+  width: 90%;
+  right: 0;
+  /* padding-bottom: 10rem; */
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  /* border: 2px solid greenyellow; */
+}
+.area2-inner-lsp::-webkit-scrollbar {
+  display: none;
+}
+
+.right-carrot-svgbutton {
+  padding: 3px 0;
+  height: 48px;
+}
+.right-carrot-svgbutton svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* Left side cards */
+.left-cards {
+  text-align: start;
+  margin: auto;
+  /* margin-bottom: 1px; */
+  /* width: 18rem; */
+}
+.left-cards-nowrapText {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.createTopicRow {
+  color: #d6c800;
+  border-top: 1px solid #b55400;
+  font-style: italic;
+}
+.editTopicStyleDiv {
+  border-left: 1px solid #b55400;
+  padding-right: 2px;
+  margin-left: 5px;
+}
+.editTopicContatiner {
+  padding: 0;
+  border-radius: 5%;
+  border-left: 1px solid #b55400;
+  height: 100%;
+  justify-content: center;
+}
+.editTopicContatiner > div {
+  color: #b55400;
+  justify-content: center;
+}
+/* Left side panel Topic Cards area */
+/* .area2-lsp {
+    display: inline-block;
+    max-height: inherit;
+    min-height: inherit;
+    height: auto;
+    max-width: 95%;
+    background-color: #222831;
+    flex-grow: 1;
+  } */
+
+/* .area2-inner-lsp {
+    display: block;
+    max-height: 80vh;
+    min-height: 11rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+  } */
