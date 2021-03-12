@@ -59,8 +59,6 @@ export default function Posts(props) {
     }
   }, [setUserCanView, boardDetails]);
 
-  console.log(userCanView);
-
   useEffect(() => {
     axiosInstance
       .get("boards/retrieve-boards/" + boardID + "/")
@@ -131,9 +129,8 @@ export default function Posts(props) {
                         postsList.map((post) => {
                           if (post.posting_user.username === user.username) {
                             return (
-                              <>
+                              <div key={post.id}>
                                 <CurrentUserPost
-                                  key={post.id}
                                   userID={post.posting_user.user_id}
                                   displayName={post.posting_user.display_name}
                                   userImage={post.posting_user.image}
@@ -141,19 +138,21 @@ export default function Posts(props) {
                                   message={post.message}
                                   // Click on picture -> go to profile
                                 />
-                              </>
+                              </div>
                             );
                           } else {
                             return (
-                              <OtherUserPost
-                                key={post.id}
-                                userID={post.posting_user.user_id}
-                                displayName={post.posting_user.display_name}
-                                dateTime={post.date_time_created}
-                                userImage={post.posting_user.image}
-                                message={post.message}
-                                // Click on picture -> go to profile
-                              />
+                              <div key={post.id}>
+                                <OtherUserPost
+                                  key={post.id}
+                                  userID={post.posting_user.user_id}
+                                  displayName={post.posting_user.display_name}
+                                  dateTime={post.date_time_created}
+                                  userImage={post.posting_user.image}
+                                  message={post.message}
+                                  // Click on picture -> go to profile
+                                />
+                              </div>
                             );
                           }
                         })

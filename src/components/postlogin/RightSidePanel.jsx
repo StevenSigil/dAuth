@@ -24,16 +24,16 @@ function RightSidePanel(props) {
         console.log("usersFriends Response:\n", response);
       })
       .catch((error) => console.log(error));
-  }, [setUsersFriends]);
+  }, [setUsersFriends, getFriends]);
 
   useEffect(() => {
     if (getFriends) {
-      window.location.reload()
+      window.location.reload();
     }
     // return () => {
     //   setGetFriends(false);
     // }
-  }, [getFriends, setGetFriends])
+  }, [getFriends, setGetFriends]);
 
   // dynamic styling
   const [area2Height, setArea2Height] = useState("100%"); // maybe a collapse instead of slicing in half?

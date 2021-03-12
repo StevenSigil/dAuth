@@ -10,11 +10,11 @@ function CreateBoardModal(props) {
   const setShow = props.setShow;
   const topicID = props.topicID;
 
-  function resetModal() {
+  function resetModal(refresh=false) {
     setBoardName("");
     setBoardDescription("");
     setShow(false);
-    window.location.reload();
+    if (refresh) window.location.reload();
   }
 
   function prepData() {
@@ -35,14 +35,20 @@ function CreateBoardModal(props) {
       .post("boards/new_board/", data)
       .then((response) => {
         console.log(response);
-        resetModal();
+        resetModal(true);
       })
       .catch((error) => console.log(error));
   }
 
   return (
     <div>
-      <Modal show={show} onHide={resetModal}>
+      <Modal
+        backdrop="static"
+        keyboard={false}
+        animation={false}
+        show={show}
+        onHide={resetModal}
+      >
         <Modal.Header>
           <Modal.Title>Create a new board</Modal.Title>
         </Modal.Header>
@@ -72,9 +78,11 @@ function CreateBoardModal(props) {
           <Button variant="outline-primary" onClick={handleBoardSave}>
             Save
           </Button>
-          <Button variant="outline-secondary" onClick={resetModal}>
-            Cancel
-          </Button>
+          {!props.fromNewTopic ? (
+            <Button variant="outline-secondary" onClick={() => resetModal(false)}>
+              Cancel
+            </Button>
+          ) : null}
         </Modal.Footer>
       </Modal>
     </div>

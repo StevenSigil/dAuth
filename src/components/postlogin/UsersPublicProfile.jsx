@@ -130,9 +130,10 @@ function UsersPublicProfile(props) {
   }
 
   function handleTopicClick(topicID) {
-    setActiveTopicID(topicID);
-    showTopicDetails();
-    setWindowIsShowing(true);
+    // setActiveTopicID(topicID);
+    // showTopicDetails();
+    // setWindowIsShowing(true);
+    window.location = "/topics/" + topicID + "/"
   }
 
   useEffect(() => {

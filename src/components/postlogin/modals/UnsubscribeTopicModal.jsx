@@ -42,7 +42,7 @@ function UnsubscribeTopicModal(props) {
 
   return (
     <>
-      <Modal show={show} onHide={() => setShow(false)}>
+      <Modal animation={false} show={show} onHide={() => setShow(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Unsubscribe?</Modal.Title>
         </Modal.Header>

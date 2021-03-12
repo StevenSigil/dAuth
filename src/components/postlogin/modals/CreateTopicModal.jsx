@@ -37,7 +37,7 @@ function CreateTopicModal(props) {
 
   return (
     <>
-      <Modal show={show} onHide={resetModal}>
+      <Modal animation={false} show={show} onHide={resetModal}>
         <Modal.Header closeButton>
           <Modal.Title>Create a new topic</Modal.Title>
         </Modal.Header>
@@ -74,6 +74,7 @@ function CreateTopicModal(props) {
       </Modal>
 
       <CreateBoardModal
+        fromNewTopic={true}
         topicID={topicID}
         show={showCreateBoardModal}
         setShow={setShowCreateBoardModal}

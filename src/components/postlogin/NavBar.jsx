@@ -10,15 +10,15 @@ import {
 
 import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
 
-// import UserSearchModal from "../modals/UserSearchModal";
-// import LogoutModal from "../modals/LogoutModal";
-// import CreateTopicModal from "../modals/CreateTopicModal";
+import UserSearchModal from "./modals/UserSearchModal";
+import LogoutModal from "./modals/LogoutModal";
+import CreateTopicModal from "./modals/CreateTopicModal";
 
-// import TopicMdCards from "../card_groups/TopicMdCards";
-// import UsersCards from "../card_groups/UsersCards";
+import TopicMdCards from "./card_groups/TopicMdCards";
+import UsersCards from "./card_groups/UsersCards";
 
 function NavBar(props) {
-  const setLogin = props.setLogin;
+  // const setLogin = props.setLogin;
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showUserSearchModal, setShowUserSearchModal] = useState(false);
 
@@ -39,31 +39,60 @@ function NavBar(props) {
     if (eventKey === "profile") {
       // props.profile();
       window.location = "/" + userID + "/public";
-
-      // } else if (eventKey === "logout") {
-      //   setShowLogoutModal(true);
       // } else if (eventKey === "public-topics") {
       //   props.publicTopics();
-      // } else if (eventKey === "user-search") {
-      //   setShowUserSearchModal(true);
-      // } else if (eventKey === "topic-create") {
-      //   setShowCreateTopicModal(true);
+    } else if (eventKey === "user-search") {
+      setShowUserSearchModal(true);
+    } else if (eventKey === "topic-create") {
+      setShowCreateTopicModal(true);
+    } else if (eventKey === "logout") {
+      setShowLogoutModal(true);
     }
   }
 
-  const topics = props.topics;
-  const showTopicDetails = props.showTopicDetails;
-  const setActiveTopicID = props.setActiveTopicID;
+  // const topics = props.topics;
+  // const showTopicDetails = props.showTopicDetails;
+  // const setActiveTopicID = props.setActiveTopicID;
   const [showCreateTopicModal, setShowCreateTopicModal] = useState(false);
 
-  const usersFriends = props.usersFriends;
-  const handleOtherUserClicked = props.handleOtherUserClicked;
+  const [topics, setTopics] = useState([]);
+  const [usersFriends, setUsersFriends] = useState([]);
+
+  // const usersFriends = props.usersFriends;
+  // const handleOtherUserClicked = props.handleOtherUserClicked;
 
   function handleTopicCardClick(topicID) {
     // Switches the Main(page) to Topic Details
-    setActiveTopicID(topicID);
-    showTopicDetails();
+    // setActiveTopicID(topicID);
+    // showTopicDetails();
+    window.location = "/topics/" + topicID + "/"
   }
+
+  useEffect(() => {
+    // Retrieve the user's subscribed-to topics when navbar has collapse nav's
+    if (window.innerWidth < 1200) {
+      axiosInstance
+        .get("/profiles/public/profile_topics/")
+        .then((response) => {
+          console.log("Profile & Topics:\n", response);
+          setTopics(response.data.topics_subscribed_to);
+        })
+        .catch((error) => console.log("Error retrievingTopics.\n", error));
+    }
+  }, [setTopics, window.innerWidth]);
+
+  useEffect(() => {
+    // Retrieve the user's friends topics when navbar has collapse nav's
+    if (window.innerWidth < 1200) {
+      axiosInstance
+        .get("profiles/public/users_friends/")
+        .then((response) => {
+          setUsersFriends(response.data);
+          console.log("usersFriends Response:\n", response);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [setUsersFriends]);
 
   return (
     <Navbar className="main-nav" variant="dark" expand="lg">
@@ -82,28 +111,32 @@ function NavBar(props) {
               <Dropdown.Toggle as={NavLink} id="dropdown-topics">
                 Topics
               </Dropdown.Toggle>
-              {/* <Dropdown.Menu align="left">
+              <Dropdown.Menu align="left">
                 <Dropdown.Item>
                   <TopicMdCards
                     topicsToRender={topics}
                     handleTopicClick={handleTopicCardClick}
                   />
                 </Dropdown.Item>
-              </Dropdown.Menu> */}
+              </Dropdown.Menu>
             </Dropdown>
 
-            <Dropdown as={NavItem} className="d-auto d-xl-none">
+            <Dropdown
+              as={NavItem}
+              id="drop-friends-outer"
+              className="d-auto d-xl-none"
+            >
               <Dropdown.Toggle as={NavLink} id="dropdown-friends">
                 Friends
               </Dropdown.Toggle>
-              {/* <Dropdown.Menu align="left">
+              <Dropdown.Menu align="left">
                 <Dropdown.Item>
                   <UsersCards
                     usersList={usersFriends}
-                    handleOtherUserClicked={handleOtherUserClicked}
+                    // handleOtherUserClicked={handleOtherUserClicked}
                   />
                 </Dropdown.Item>
-              </Dropdown.Menu> */}
+              </Dropdown.Menu>
             </Dropdown>
           </Nav>
 
@@ -111,18 +144,17 @@ function NavBar(props) {
             <Nav.Link eventKey="logout">Log out</Nav.Link>
           </Nav>
 
-          {/* <UserSearchModal
-            handleOtherUserClicked={props.handleOtherUserClicked}
-            getUsersFriends={props.getUsersFriends}
+          <UserSearchModal
+            // handleOtherUserClicked={props.handleOtherUserClicked}
             show={showUserSearchModal}
             setShow={setShowUserSearchModal}
-          /> */}
-          {/* <CreateTopicModal
+          />
+          <CreateTopicModal
             show={showCreateTopicModal}
             setShow={setShowCreateTopicModal}
-            getProfileAndTopics={props.getProfileAndTopics}
-          /> */}
-          {/* <LogoutModal show={showLogoutModal} setShow={setShowLogoutModal} /> */}
+            // getProfileAndTopics={props.getProfileAndTopics}
+          />
+          <LogoutModal show={showLogoutModal} setShow={setShowLogoutModal} />
         </Navbar.Collapse>
       </Container>
     </Navbar>

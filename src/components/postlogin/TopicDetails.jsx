@@ -8,15 +8,15 @@ import { ReactComponent as CheckCircle } from "../../static/svg/check2-circle.sv
 
 import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
 
-import NavBar from './NavBar'
+import NavBar from "./NavBar";
 import UsersCards from "./card_groups/UsersCards";
 import BoardsCards from "./card_groups/BoardsCards";
 import LeftSidePanel from "./LeftSidePanel";
 import RightSidePanel from "./RightSidePanel";
-// import EditTopicModal from "../modals/EditTopicModal";
-// import UserSearchModal from "../modals/UserSearchModal";
-// import SubscribeToTopicModal from "../modals/SubscribeToTopicModal";
-// import UnsubscribeTopicModal from "../modals/UnsubscribeTopicModal";
+import EditTopicModal from "./modals/EditTopicModal";
+import UserSearchModal from "./modals/UserSearchModal";
+import SubscribeToTopicModal from "./modals/SubscribeToTopicModal";
+import UnsubscribeTopicModal from "./modals/UnsubscribeTopicModal";
 
 function TopicDetails(props) {
   const user_id = props.user_id;
@@ -25,9 +25,9 @@ function TopicDetails(props) {
   const hideTopicDetails = props.hideTopicDetails;
   const setHideTopicDetails = props.setHideTopicDetails;
 
-  const getTopicForWindow = props.getTopicForWindow;
-  const setGetTopicForWindow = props.setGetTopicForWindow;
-  const handleOtherUserClicked = props.handleOtherUserClicked;
+  // const getTopicForWindow = props.getTopicForWindow;
+  // const setGetTopicForWindow = props.setGetTopicForWindow;
+  // const handleOtherUserClicked = props.handleOtherUserClicked;
 
   const [topic, setTopic] = useState(null);
   const [boards, setBoards] = useState(null);
@@ -44,14 +44,12 @@ function TopicDetails(props) {
     getAndSetToken();
     axiosInstance
       .get("users/basic_user_details/")
-      .then(response => {
+      .then((response) => {
         console.log(response);
         setUserID(response.data.pk);
       })
-      .catch(error => console.log(error))
-  }, [])
-
-  
+      .catch((error) => console.log(error));
+  }, []);
 
   function checkIfUserIsAdmin(lTopic) {
     // Return true if the current user is in the 'topic_admins'
@@ -72,7 +70,7 @@ function TopicDetails(props) {
       .then((response) => {
         console.log(response);
         setShowSubscribeModal(true);
-        topicAPI();
+        // topicAPI();
         // props.getProfileAndTopics(true);
       })
       .catch((error) => console.log(error));
@@ -110,7 +108,7 @@ function TopicDetails(props) {
         setBoards(response.data.boards);
       })
       .catch((error) => console.log(error));
-  }, [getTopicForWindow, setGetTopicForWindow, activeTopicID]);
+  }, [activeTopicID]);
 
   function getDateCreated(dateTime) {
     // Formats the dateTime of the topic
@@ -231,7 +229,7 @@ function TopicDetails(props) {
                         </Row>
                         <UsersCards
                           usersList={topic.topic_admins}
-                          handleOtherUserClicked={handleOtherUserClicked}
+                          // handleOtherUserClicked={handleOtherUserClicked}
                           activeWindow="TopicDeatils"
                         />
                       </div>
@@ -244,7 +242,7 @@ function TopicDetails(props) {
                       <div className="boards-innerdiv-td3">
                         <UsersCards
                           usersList={topic.users_subscribed}
-                          handleOtherUserClicked={handleOtherUserClicked}
+                          // handleOtherUserClicked={handleOtherUserClicked}
                           activeWindow="TopicDeatils"
                         />
                       </div>
@@ -270,39 +268,39 @@ function TopicDetails(props) {
                 </Row>
               </Container>
 
-              {/* <SubscribeToTopicModal
-        show={showSubscribeModal}
-        setShow={setShowSubscribeModal}
-      /> */}
+              <SubscribeToTopicModal
+                show={showSubscribeModal}
+                setShow={setShowSubscribeModal}
+              />
 
-              {/* <EditTopicModal
-        topic={topic}
-        show={showEditTopicModal}
-        setShow={setShowEditTopicModal}
-        topicAPI={topicAPI}
-        topicID={topic.id} // Users search modal props
-        handleOtherUserClicked={handleOtherUserClicked}
-        setGetTopicForWindow={setGetTopicForWindow}
-        getProfileAndTopics={props.getProfileAndTopics}
-      /> */}
-              {/* 
-      <UnsubscribeTopicModal
-        activeTopicID={topic.id}
-        show={showUnsubscribeModal}
-        setShow={setShowUnsubscribeModal}
-        resetUserDetailsForm={resetWindow}
-        userIsAdmin={() => checkIfUserIsAdmin(topic)}
-        getProfileAndTopics={props.getProfileAndTopics}
-      /> */}
+              <EditTopicModal
+                topic={topic}
+                show={showEditTopicModal}
+                setShow={setShowEditTopicModal}
+                topicAPI={topicAPI}
+                topicID={topic.id} // Users search modal props
+                // handleOtherUserClicked={handleOtherUserClicked}
+                // setGetTopicForWindow={setGetTopicForWindow}
+                // getProfileAndTopics={props.getProfileAndTopics}
+              />
 
-              {/* <UserSearchModal
-        topicID={topic.id}
-        topicDetails={true}
-        topicAPI={topicAPI}
-        show={showUserSearchModal}
-        setShow={setShowUserSearchModal}
-        handleOtherUserClicked={handleOtherUserClicked}
-      /> */}
+              <UnsubscribeTopicModal
+                activeTopicID={topic.id}
+                show={showUnsubscribeModal}
+                setShow={setShowUnsubscribeModal}
+                // resetUserDetailsForm={resetWindow}
+                userIsAdmin={() => checkIfUserIsAdmin(topic)}
+                // getProfileAndTopics={props.getProfileAndTopics}
+              />
+
+              <UserSearchModal
+                topicID={topic.id}
+                topicAPI={topicAPI}
+                topicDetails={true}
+                show={showUserSearchModal}
+                setShow={setShowUserSearchModal}
+                // handleOtherUserClicked={handleOtherUserClicked}
+              />
             </Col>
 
             <RightSidePanel />

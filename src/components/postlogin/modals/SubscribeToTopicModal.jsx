@@ -12,7 +12,7 @@ export default function SubscribeToTopicModal(props) {
 
   return (
     <>
-      <Modal show={show} onHide={closeModal}>
+      <Modal animation={false} show={show} onHide={closeModal}>
         <Modal.Header closeButton>
           <Modal.Title>Topic editor</Modal.Title>
         </Modal.Header>
