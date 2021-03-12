@@ -2,9 +2,9 @@
 .postsMain {
   display: block;
   flex-wrap: wrap;
-  padding: 5px;
-  position: relative;
-  min-height: 90vh;
+  /* padding: 5px; */
+  /* position: relative; */
+  min-height: inherit;
   background-color: inherit;
 
   overflow-y: scroll;
@@ -19,6 +19,7 @@
 .postWindow-heading {
   max-width: 95%;
   text-align: center;
+  height: 5rem;
   padding-bottom: 0.5rem;
   background-color: #222831;
   /* border-bottom: 0.2rem solid #393e46; */
@@ -32,8 +33,9 @@
 
 .row2-outercontainer-posts {
   padding: 0.5rem 2rem;
-  height: 75vh;
+  height: calc(98vh - 40px - 7vh - 8rem);
   background-color: #222831;
+  padding-bottom: 10vh;
 
   overflow-y: scroll;
   -ms-overflow-style: none;
@@ -176,6 +178,8 @@
 }
 .postSubmitRow {
   padding-top: 1rem;
+  height: 7vh;
+  margin-bottom: 3rem;
 }
 .postSubmitRow div {
   display: flex;

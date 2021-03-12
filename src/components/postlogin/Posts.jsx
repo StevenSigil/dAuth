@@ -131,15 +131,17 @@ export default function Posts(props) {
                         postsList.map((post) => {
                           if (post.posting_user.username === user.username) {
                             return (
-                              <CurrentUserPost
-                                key={post.id}
-                                userID={post.posting_user.user_id}
-                                displayName={post.posting_user.display_name}
-                                userImage={post.posting_user.image}
-                                dateTime={post.date_time_created}
-                                message={post.message}
-                                // Click on picture -> go to profile
-                              />
+                              <>
+                                <CurrentUserPost
+                                  key={post.id}
+                                  userID={post.posting_user.user_id}
+                                  displayName={post.posting_user.display_name}
+                                  userImage={post.posting_user.image}
+                                  dateTime={post.date_time_created}
+                                  message={post.message}
+                                  // Click on picture -> go to profile
+                                />
+                              </>
                             );
                           } else {
                             return (
