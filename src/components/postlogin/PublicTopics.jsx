@@ -41,9 +41,9 @@ function PublicTopics(props) {
 
   function resetWindowsToActiveTopic() {
     // Closes this componenet and resets the active topic.
-    props.setActiveTopicID("");
-    props.getProfileAndTopics();
-    props.setHidePublicTopics(true);
+    // props.setActiveTopicID("");
+    // props.getProfileAndTopics();
+    // props.setHidePublicTopics(true);
   }
 
   useEffect(() => {
@@ -131,7 +131,7 @@ function PublicTopics(props) {
                       <h2>Popular topics</h2>
                       <PublicTopicsAccordian
                         publicTopics={publicTopics}
-                        resetWindowsToActiveTopic={resetWindowsToActiveTopic}
+                        // resetWindowsToActiveTopic={resetWindowsToActiveTopic}
                         handleTopicClick={handleTopicClick}
                       />
                     </div>

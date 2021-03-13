@@ -58,8 +58,8 @@
   margin: 0 0.75rem;
 }
 .posts-imageCol img {
-  height: inherit;
-  width: inherit;
+  height: 100%;
+  width: 100%;
 }
 
 /* currentUser's single posts */
@@ -74,6 +74,7 @@
   height: auto;
   max-width: 80%;
   margin: auto 1rem auto auto;
+  text-align: end;
 }
 .posts-postCol-currentUser > .row {
   padding: 0.25rem;
@@ -111,6 +112,7 @@
   height: auto;
   max-width: 80%;
   margin: auto auto auto 1rem;
+  text-align: start;
 }
 .posts-postCol-otherUser > .row {
   padding: 0.25rem;

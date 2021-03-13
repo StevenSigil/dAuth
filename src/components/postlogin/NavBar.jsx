@@ -16,11 +16,13 @@ import CreateTopicModal from "./modals/CreateTopicModal";
 
 import TopicMdCards from "./card_groups/TopicMdCards";
 import UsersCards from "./card_groups/UsersCards";
+import UserNotLoggedInModal from "./modals/UserNotLoggedInModal";
 
 function NavBar(props) {
   // const setLogin = props.setLogin;
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showUserSearchModal, setShowUserSearchModal] = useState(false);
+  const [showNotLoggedIn, setShowNotLoggedIn] = useState(false);
 
   const [userID, setUserID] = useState("");
 
@@ -32,15 +34,19 @@ function NavBar(props) {
         console.log(response);
         setUserID(response.data.pk);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error);
+        setShowNotLoggedIn(true);
+      });
   }, []);
 
   function handleSelect(eventKey) {
     if (eventKey === "profile") {
       // props.profile();
       window.location = "/" + userID + "/public";
-      // } else if (eventKey === "public-topics") {
-      //   props.publicTopics();
+    } else if (eventKey === "public-topics") {
+      window.location = "/public";
+      // props.publicTopics();
     } else if (eventKey === "user-search") {
       setShowUserSearchModal(true);
     } else if (eventKey === "topic-create") {
@@ -65,7 +71,7 @@ function NavBar(props) {
     // Switches the Main(page) to Topic Details
     // setActiveTopicID(topicID);
     // showTopicDetails();
-    window.location = "/topics/" + topicID + "/"
+    window.location = "/topics/" + topicID + "/";
   }
 
   useEffect(() => {
@@ -157,6 +163,10 @@ function NavBar(props) {
           <LogoutModal show={showLogoutModal} setShow={setShowLogoutModal} />
         </Navbar.Collapse>
       </Container>
+      <UserNotLoggedInModal
+        show={showNotLoggedIn}
+        setShow={setShowNotLoggedIn}
+      />
     </Navbar>
   );
 }

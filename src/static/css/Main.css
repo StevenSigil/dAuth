@@ -1,153 +1,173 @@
 .temp-lg-text {
-    color: #eeeeee;
-    text-align: center;
-    font-size: 4.5em;
-    margin-top: 2rem;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 4.5em;
+  margin-top: 2rem;
 }
 
 /* Main middle col */
 .middle-main {
-    justify-content: center;
-    background-color: #393e46;
-    color: #eeeeee;
-    min-height: calc(98vh - 40px);
-    position: relative;
-    /* margin-bottom: 1rem; */
-    overflow-y: hidden;
-  }
-  
-  /* Right/Left main columns */
-  .LeftNavColumn {
-    color: #eeeeee;
-    min-height: calc(98vh - 40px);
-    position: relative;
-    /* margin-bottom: 1rem; */
-  }
-  .RightNavColumn {
-    color: #eeeeee;
-    min-height: calc(98vh - 40px);
-    position: relative;
-    /* margin-bottom: 1rem; */
-  }
-  
-  /* All cards */
-  .cardColor {
-    border: 1px solid #b55400;
-    color: #eeeeee;
-    background-color: #393e46;
-    margin-bottom: 7px;
-  }
-  .cardColor2 {
-    border-top: 1px solid #b55400;
-    border-bottom: 1px solid #b55400;
-    color: #eeeeee;
-    background-color: #222831;
-    margin-bottom: 5px;
-  }
-  
-  .CardGroupContainer {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    /* max-height: 40rem; */
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .CardGroupContainer::-webkit-scrollbar {
-    display: none;
-  }
-  .CardGroupContainer > .inner-map-centered-cards {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 19rem;
-    text-align: start;
-  }
-  
-  /* Button in card title */
-  .topic-title-container {
-    display: inline-flex;
-    width: inherit;
-    height: auto;
-    align-items: center;
-    justify-content: center;
-    padding-top: 0.3rem;
-  }
-  .topic-title-container > .btn {
-    position: absolute;
-    display: flex;
-    right: 8%;
-    height: inherit;
-    width: inherit;
-  }
-  
-  /* Custom Button */
-  .orange-primary-btn {
-    color: #eeeeee;
-    border-color: #b55400;
-    background-color: #222831;
-  }
-  .orange-primary-btn:hover {
-    border-color: #b55400;
-    background-color: #393e46;
-  }
-  .oragne-danger-btn {
-    color: #eeeeee;
-    border-color: #b55400;
-    background-color: #222531;
-  }
-  .oragne-danger-btn:hover {
-    color: black;
-    
-  }
-  
-  /* Nav */
-  .main-nav {
-    min-height: 40px;
-  }
-  .navbar-container {
-    padding: 0;
-  }
-  .navbar {
-    background-color: #222831;
-    border-top: 1px solid #b55400;
-    border-bottom: 1px solid #b55400;
-  }
-  .navbar-brand {
-    margin-right: 20px;
-  }
-  .dropdown-menu {
-    background-color: #222831;
-    margin-right: 2rem;
-  }
-  .dropdown-item {
-    max-height: 60vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    padding: 0.25rem 1rem;
-    text-align: center;
-    min-width: inherit;
-  }
-  .dropdown-item:hover {
-    background-color: inherit;
-  }
-  .dropdown-item > .inner-map-centered-cards {
-    max-width: 15rem;
-  }
-  .dropdown-item > .UsersCards-outer-div {
-    min-width: 15rem;
-  }
-  .cardColor2:hover {
-    background-color: #171c24;
-  }
-  .dropdown-item .description-nowrap {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  
+  justify-content: center;
+  background-color: #393e46;
+  color: #eeeeee;
+  min-height: calc(98vh - 40px);
+  position: relative;
+  /* margin-bottom: 1rem; */
+  overflow-y: hidden;
+}
 
-  .delete-board-modal {
-    text-align: center;
-  }
+/* Right/Left main columns */
+.LeftNavColumn {
+  color: #eeeeee;
+  min-height: calc(98vh - 40px);
+  position: relative;
+  /* margin-bottom: 1rem; */
+}
+.RightNavColumn {
+  color: #eeeeee;
+  min-height: calc(98vh - 40px);
+  position: relative;
+  /* margin-bottom: 1rem; */
+}
+
+/* All cards */
+.cardColor {
+  border: 1px solid #b55400;
+  color: #eeeeee;
+  background-color: #393e46;
+  margin-bottom: 7px;
+}
+.cardColor2 {
+  border-top: 1px solid #b55400;
+  border-bottom: 1px solid #b55400;
+  color: #eeeeee;
+  background-color: #222831;
+  margin-bottom: 5px;
+}
+
+.CardGroupContainer {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  /* max-height: 40rem; */
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.CardGroupContainer::-webkit-scrollbar {
+  display: none;
+}
+.CardGroupContainer > .inner-map-centered-cards {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 19rem;
+  text-align: start;
+}
+
+/* Button in card title */
+.topic-title-container {
+  display: inline-flex;
+  width: inherit;
+  height: auto;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.3rem;
+}
+.topic-title-container > .btn {
+  position: absolute;
+  display: flex;
+  right: 8%;
+  height: inherit;
+  width: inherit;
+}
+
+/* Users cards */
+.lg-card-header {
+  padding: 6px 10px 6px 10px;
+  margin: 0;
+
+}
+.lg-card-header > .row {
+  margin: auto;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.lg-card-header > .row > .col-10, .col-7 {
+  padding: 0;
+  text-align: center;
+}
+.card-img-col {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  /* width: inherit */
+}
+
+/* Custom Button */
+.orange-primary-btn {
+  color: #eeeeee;
+  border-color: #b55400;
+  background-color: #222831;
+}
+.orange-primary-btn:hover {
+  border-color: #b55400;
+  background-color: #393e46;
+}
+.oragne-danger-btn {
+  color: #eeeeee;
+  border-color: #b55400;
+  background-color: #222531;
+}
+.oragne-danger-btn:hover {
+  color: black;
+}
+
+/* Nav */
+.main-nav {
+  min-height: 40px;
+}
+.navbar-container {
+  padding: 0;
+}
+.navbar {
+  background-color: #222831;
+  border-top: 1px solid #b55400;
+  border-bottom: 1px solid #b55400;
+}
+.navbar-brand {
+  margin-right: 20px;
+}
+.dropdown-menu {
+  background-color: #222831;
+  margin-right: 2rem;
+}
+.dropdown-item {
+  max-height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  padding: 0.25rem 1rem;
+  text-align: center;
+  min-width: inherit;
+}
+.dropdown-item:hover {
+  background-color: inherit;
+}
+.dropdown-item > .inner-map-centered-cards {
+  max-width: 15rem;
+}
+.dropdown-item > .UsersCards-outer-div {
+  min-width: 15rem;
+}
+.cardColor2:hover {
+  background-color: #171c24;
+}
+.dropdown-item .description-nowrap {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.delete-board-modal {
+  text-align: center;
+}

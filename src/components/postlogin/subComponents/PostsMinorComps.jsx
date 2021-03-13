@@ -43,6 +43,8 @@ export function CurrentUserPost(props) {
         <Image
           src={userImage}
           alt={displayName + " image"}
+          width="100%"
+          height="100%"
           onClick={() => handleOtherUserClicked(userID)}
           roundedCircle
         />

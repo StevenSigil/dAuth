@@ -61,14 +61,12 @@ function UsersCards(props) {
                 >
                   <Card.Header className="lg-card-header" style={{ margin: 0 }}>
                     <Row noGutters>
-                      <Col
-                        xs={2}
-                        className="card-img-col"
-                        // style={{ display: "flex", alignItems: "center" }}
-                      >
+                      <Col xs={2} className="card-img-col">
                         <Image
                           roundedCircle
                           fluid
+                          width="100%"
+                          height="100%"
                           src={user ? user.image : null}
                           onClick={() => handleCardClick(user.user_id)}
                           alt={user.display_name + " image"}
@@ -76,9 +74,8 @@ function UsersCards(props) {
                       </Col>
 
                       <Col
-                        xs={smallCol ? 8 : 10}
+                        xs={smallCol ? 7 : 10}
                         onClick={() => handleCardClick(user.user_id)}
-                        style={{ textAlign: "center" }}
                       >
                         <Card.Title>{user.display_name}</Card.Title>
                         <Card.Text>{user.username}</Card.Text>
@@ -87,7 +84,6 @@ function UsersCards(props) {
                       {/* 'Manage' & 'Add' buttons */}
                       <Col
                         xs={2}
-                        style={{ paddingLeft: 0 }}
                         hidden={!showSecondayButton}
                         className="my-auto"
                       >
