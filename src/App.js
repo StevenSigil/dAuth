@@ -17,6 +17,7 @@ import Main from "./components/postlogin/Main";
 import UsersPublicProfile from "./components/postlogin/UsersPublicProfile";
 import EditProfile from "./components/postlogin/EditProfile";
 import Posts from "./components/postlogin/Posts";
+import PublicTopics from "./components/postlogin/PublicTopics";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -40,6 +41,8 @@ function App() {
           </Route>
 
           <Route path={"/topics/:id"} component={TopicDetails} />
+
+          <Route path={"/public/"} component={PublicTopics} />
 
           <Route path={"/board/:boardID"} component={Posts} />
 

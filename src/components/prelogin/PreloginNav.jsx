@@ -22,13 +22,13 @@ function PreLoginNav() {
       <Navbar
         sticky="top"
         variant="dark"
-        style={{ backgroundColor: "#393e46" }}
+        className="prelogin-nav-outer"
       >
         <Navbar.Brand>d-Auth</Navbar.Brand>
 
         <Navbar.Collapse id="prelogin-nav-collapse">
-          <Nav style={{ width: "60%", margin: "auto" }}>
-            <Container>
+          <Nav>
+            <Container fluid>
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/login/">Login</Nav.Link>
               <Nav.Link href="/register/">Register</Nav.Link>

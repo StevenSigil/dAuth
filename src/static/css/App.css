@@ -7,11 +7,24 @@ body {
   padding: 0;
 }
 
+.prelogin-nav-outer {
+  max-width: 100vw;
+  padding: 8px 2rem;
+  background-color: #393e46!important;
+}
+#prelogin-nav-collapse .navbar-nav {
+  width: 100%;
+}
+#prelogin-nav-collapse .container-fluid {
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .App-logo {
   height: 50px;
   width: 50px;
   pointer-events: none;
-  margin-right: 0;
+  margin: 0;
 }
 .App-link {
   color: #61dafb;

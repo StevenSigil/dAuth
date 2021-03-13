@@ -10,7 +10,7 @@ function CreateBoardModal(props) {
   const setShow = props.setShow;
   const topicID = props.topicID;
 
-  function resetModal(refresh=false) {
+  function resetModal(refresh = false) {
     setBoardName("");
     setBoardDescription("");
     setShow(false);
@@ -41,51 +41,49 @@ function CreateBoardModal(props) {
   }
 
   return (
-    <div>
-      <Modal
-        backdrop="static"
-        keyboard={false}
-        animation={false}
-        show={show}
-        onHide={resetModal}
-      >
-        <Modal.Header>
-          <Modal.Title>Create a new board</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="createBoard-name">
-              <Form.Label>Board Name</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter a name for your board"
-                value={boardName}
-                onChange={(e) => setBoardName(e.target.value)}
-              />
-            </Form.Group>
-            <Form.Group controlId="createBoard-description">
-              <Form.Label>Board Description</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter a description for your board"
-                value={BoardDescription}
-                onChange={(e) => setBoardDescription(e.target.value)}
-              />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="outline-primary" onClick={handleBoardSave}>
-            Save
+    <Modal
+      backdrop="static"
+      keyboard={false}
+      animation={false}
+      show={show}
+      onHide={resetModal}
+    >
+      <Modal.Header>
+        <Modal.Title>Create a new board</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form>
+          <Form.Group controlId="createBoard-name">
+            <Form.Label>Board Name</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter a name for your board"
+              value={boardName}
+              onChange={(e) => setBoardName(e.target.value)}
+            />
+          </Form.Group>
+          <Form.Group controlId="createBoard-description">
+            <Form.Label>Board Description</Form.Label>
+            <Form.Control
+              type="text"
+              placeholder="Enter a description for your board"
+              value={BoardDescription}
+              onChange={(e) => setBoardDescription(e.target.value)}
+            />
+          </Form.Group>
+        </Form>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="outline-primary" onClick={handleBoardSave}>
+          Save
+        </Button>
+        {!props.fromNewTopic ? (
+          <Button variant="outline-secondary" onClick={() => resetModal(false)}>
+            Cancel
           </Button>
-          {!props.fromNewTopic ? (
-            <Button variant="outline-secondary" onClick={() => resetModal(false)}>
-              Cancel
-            </Button>
-          ) : null}
-        </Modal.Footer>
-      </Modal>
-    </div>
+        ) : null}
+      </Modal.Footer>
+    </Modal>
   );
 }
 

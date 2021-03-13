@@ -63,7 +63,8 @@ function UsersCards(props) {
                     <Row noGutters>
                       <Col
                         xs={2}
-                        style={{ display: "flex", alignItems: "center" }}
+                        className="card-img-col"
+                        // style={{ display: "flex", alignItems: "center" }}
                       >
                         <Image
                           roundedCircle
