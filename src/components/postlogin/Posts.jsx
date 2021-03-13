@@ -26,7 +26,7 @@ export default function Posts(props) {
   const [postsList, setPostsList] = useState([]);
   const [userCanView, setUserCanView] = useState(false); // Change back to false
   const [user, setUser] = useState(null);
-  const [usersSubscriptions, setUsersSubscriptions] = useState([]);
+  // const [usersSubscriptions, setUsersSubscriptions] = useState([]);
 
   const [inputText, setInputText] = useState("");
 
@@ -68,7 +68,7 @@ export default function Posts(props) {
         setPostsList(response.data.posts);
       })
       .catch((error) => console.log(error));
-  }, []);
+  }, [boardID]);
 
   function refreshPosts(boardId) {
     axiosInstance

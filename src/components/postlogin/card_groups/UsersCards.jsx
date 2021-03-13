@@ -8,7 +8,7 @@ function UsersCards(props) {
   const usersList = props.usersList;
   const activeWindow = props.activeWindow;
   const setFriendCardUserID = props.setFriendCardUserID;
-  const handleOtherUserClicked = props.handleOtherUserClicked;
+  // const handleOtherUserClicked = props.handleOtherUserClicked;
   const setShowUserManagerModal = props.setShowUserManagerModal;
 
   const [smallCol, setSmallCol] = useState(false);

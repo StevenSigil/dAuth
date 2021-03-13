@@ -19,11 +19,11 @@ import SubscribeToTopicModal from "./modals/SubscribeToTopicModal";
 import UnsubscribeTopicModal from "./modals/UnsubscribeTopicModal";
 
 function TopicDetails(props) {
-  const user_id = props.user_id;
+  // const user_id = props.user_id;
   const activeTopicID = props.activeTopicID;
 
-  const hideTopicDetails = props.hideTopicDetails;
-  const setHideTopicDetails = props.setHideTopicDetails;
+  // const hideTopicDetails = props.hideTopicDetails;
+  // const setHideTopicDetails = props.setHideTopicDetails;
 
   // const getTopicForWindow = props.getTopicForWindow;
   // const setGetTopicForWindow = props.setGetTopicForWindow;
@@ -37,7 +37,9 @@ function TopicDetails(props) {
   const [showUserSearchModal, setShowUserSearchModal] = useState(false);
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
 
-  const [topicID, setTopicID] = useState(props.match.params.id);
+  const topicID = props.match.params.id;
+
+  // const [topicID, setTopicID] = useState(props.match.params.id);
   const [userID, setUserID] = useState("");
 
   useEffect(() => {
@@ -108,7 +110,7 @@ function TopicDetails(props) {
         setBoards(response.data.boards);
       })
       .catch((error) => console.log(error));
-  }, [activeTopicID]);
+  }, [activeTopicID, topicID]);
 
   function getDateCreated(dateTime) {
     // Formats the dateTime of the topic

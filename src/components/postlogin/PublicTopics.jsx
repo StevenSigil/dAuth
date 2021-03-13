@@ -39,12 +39,12 @@ function PublicTopics(props) {
     window.location = "/topics/" + topicID + "/";
   }
 
-  function resetWindowsToActiveTopic() {
-    // Closes this componenet and resets the active topic.
-    // props.setActiveTopicID("");
-    // props.getProfileAndTopics();
-    // props.setHidePublicTopics(true);
-  }
+  // function resetWindowsToActiveTopic() {
+  //   // Closes this componenet and resets the active topic.
+  //   props.setActiveTopicID("");
+  //   props.getProfileAndTopics();
+  //   props.setHidePublicTopics(true);
+  // }
 
   useEffect(() => {
     // Initial topic api call

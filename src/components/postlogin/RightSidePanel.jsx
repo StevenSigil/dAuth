@@ -13,7 +13,7 @@ function RightSidePanel(props) {
   const getFriends = props.getFriends;
   const setGetFriends = props.setGetFriends ? props.setGetFriends : null;
 
-  const [userProfiles, setUserProfiles] = useState([]);
+  // const [userProfiles, setUserProfiles] = useState([]);
   const [usersFriends, setUsersFriends] = useState([]);
 
   useEffect(() => {
@@ -36,8 +36,9 @@ function RightSidePanel(props) {
   }, [getFriends, setGetFriends]);
 
   // dynamic styling
-  const [area2Height, setArea2Height] = useState("100%"); // maybe a collapse instead of slicing in half?
-  const [area1Hidden, setArea1Hidden] = useState(true);
+  // const [area2Height, setArea2Height] = useState("100%"); // maybe a collapse instead of slicing in half?
+  const area2Height = "100%";
+  // const [area1Hidden, setArea1Hidden] = useState(true);
 
   // useEffect(() => {
   //   if (activeTopicID) {
@@ -65,7 +66,7 @@ function RightSidePanel(props) {
         className="d-none d-xl-table-row RightNavColumn"
       >
         <div className="rightSidePanel-inner-div">
-          <div hidden={area1Hidden} className="area2-rsp1">
+          {/* <div hidden={area1Hidden} className="area2-rsp1">
             <Container>
               <h2>Users on topic</h2>
             </Container>
@@ -76,7 +77,7 @@ function RightSidePanel(props) {
                 usersList={userProfiles}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className="area2-rsp2" style={{ height: area2Height }}>
             <Container>

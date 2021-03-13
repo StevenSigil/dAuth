@@ -85,7 +85,7 @@ function NavBar(props) {
         })
         .catch((error) => console.log("Error retrievingTopics.\n", error));
     }
-  }, [setTopics, window.innerWidth]);
+  }, [setTopics]);
 
   useEffect(() => {
     // Retrieve the user's friends topics when navbar has collapse nav's

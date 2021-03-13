@@ -19,15 +19,15 @@ import RemoveFriendModal from "./modals/RemoveFriendModal";
 import UserSearchConfirmModal from "./modals/UserSearchConfirmModal";
 
 function UsersPublicProfile(props) {
-  const currentUsersUsername = props.currentUsersUsername;
+  // const currentUsersUsername = props.currentUsersUsername;
 
-  const showTopicDetails = props.showTopicDetails;
-  const setWindowIsShowing = props.setWindowIsShowing;
-  const setActiveTopicID = props.setActiveTopicID;
+  // const showTopicDetails = props.showTopicDetails;
+  // const setWindowIsShowing = props.setWindowIsShowing;
+  // const setActiveTopicID = props.setActiveTopicID;
 
   const [viewingUserID, setViewingUserID] = useState("");
   const [curUserID, setCurUserID] = useState("");
-  const [curUserFriends, setCurUserFriends] = useState([]);
+  // const [curUserFriends, setCurUserFriends] = useState([]);
 
   const [userDetails, setUserDetails] = useState(null);
   const [activeWindow, setActiveWindow] = useState("otherUser");
@@ -45,7 +45,7 @@ function UsersPublicProfile(props) {
 
   useEffect(() => {
     setViewingUserID(props.match.params.userID);
-  }, []);
+  }, [props.match.params.userID]);
 
   useEffect(() => {
     // Sets the signed in user ID to determine if the page is the users or another users profile.
@@ -74,16 +74,16 @@ function UsersPublicProfile(props) {
     }
   }, [viewingUserID, setUserDetails, setFriendsList]);
 
-  useEffect(() => {
-    // Retrieves the current users friends list to compare to viewing users friends list.
-    axiosInstance
-      .get("profiles/public/users_friends/")
-      .then((response) => {
-        console.log(response);
-        setCurUserFriends(response.data);
-      })
-      .catch((error) => console.log(error));
-  }, [setCurUserFriends]);
+  // useEffect(() => {
+  //   // Retrieves the current users friends list to compare to viewing users friends list.
+  //   axiosInstance
+  //     .get("profiles/public/users_friends/")
+  //     .then((response) => {
+  //       console.log(response);
+  //       setCurUserFriends(response.data);
+  //     })
+  //     .catch((error) => console.log(error));
+  // }, [setCurUserFriends]);
 
   useEffect(() => {
     // Retrieves the Topics a user is subscribed to
@@ -145,7 +145,7 @@ function UsersPublicProfile(props) {
         setActiveWindow("otherUser");
       }
     }
-  }, [viewingUserID, userDetails]);
+  }, [viewingUserID, userDetails, curUserID]);
 
   function handleEditProfileButtonPress() {
     window.location = "/" + curUserID + "/edit-profile";

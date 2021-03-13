@@ -8,7 +8,7 @@ function EditTopicModal(props) {
   const show = props.show;
   const setShow = props.setShow;
   const topic = props.topic;
-  const topicAPI = props.topicAPI;
+  // const topicAPI = props.topicAPI;
 
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");

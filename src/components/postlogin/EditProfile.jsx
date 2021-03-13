@@ -1,14 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  Row,
-  Col,
-  Container,
-  Form,
-  Button,
-  Image,
-  Card,
-} from "react-bootstrap";
+import { Row, Col, Container, Button, Image, Card } from "react-bootstrap";
 import "../../static/css/EditProfile.css";
 
 import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
@@ -164,7 +156,7 @@ function EditProfile() {
         };
       });
     }
-  }, [userDetails, setInputData]);
+  }, [userDetails, curUser.email]);
 
   function handleUnsubscribeModal(id) {
     setShowUnsubscribeModal(true);
