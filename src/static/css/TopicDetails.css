@@ -9,8 +9,6 @@
   padding: 0;
 }
 .editButton-col-td button {
-  /* margin-left: auto;
-    margin-right: auto; */
   margin: auto;
   display: flex;
   align-items: center;
@@ -39,11 +37,8 @@
 }
 
 .boards-innerdiv-td3 {
-  /* display: inline-block; */
-  /* position: relative; */
   max-height: 60vh;
   height: inherit;
-  /* min-width: 100%; */
   width: inherit;
   margin: auto;
   bottom: 0;
@@ -86,42 +81,3 @@
   align-items: center;
   padding: 10px 12px;
 }
-
-/* .boards-outerdiv-td {
-    display: block;
-    align-items: center;
-    justify-content: center;
-    background-color: #222831;
-    max-height: 90%;
-    text-align: center;
-  } */
-/* .boards-innerdiv-td2 {
-    width: inherit;
-    max-height: 68vh;
-    padding-top: 1rem;
-    overflow-y: scroll;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-  .boards-innerdiv-td2::-webkit-scrollbar {
-    display: none;
-  }
-  .boards-innerdiv-td2 > .UsersCards-outer-div {
-    margin-left: auto;
-    margin-right: auto;
-    width: 18rem;
-  }
-  .boards-innerdiv-td2
-    > .UsersCards-outer-div
-    > .inner-map-centered-cards
-    > .card {
-    margin: 0;
-    min-width: 105%;
-  }
-  .boards-innerdiv-td2
-    > .UsersCards-outer-div
-    > .inner-map-centered-cards
-    > .card
-    > .lg-card-header {
-    padding: 12px 20px;
-  } */

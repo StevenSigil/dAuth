@@ -9,15 +9,14 @@ import TopicsLeftNavCards from "./card_groups/TopicsLeftNavCards";
 
 import "../../static/css/LeftSidePanel.css";
 
-function LeftSidePanel(props) {
-  const [activeTopicID, setActiveTopicID] = useState("");
-
+export default function LeftSidePanel(props) {
   const [open, setOpen] = useState(false);
   const [boards, setBoards] = useState(null);
-  const [activeTopicName, setActiveTopicName] = useState("");
-  const [showCreateTopicModal, setShowCreateTopicModal] = useState(false);
 
   const [topics, setTopics] = useState([]);
+  const [activeTopicID, setActiveTopicID] = useState("");
+  const [activeTopicName, setActiveTopicName] = useState("");
+  const [showCreateTopicModal, setShowCreateTopicModal] = useState(false);
 
   useEffect(() => {
     axiosInstance
@@ -99,12 +98,7 @@ function LeftSidePanel(props) {
               </Row>
 
               <div className="area2-inner-lsp">
-                <BoardsCards
-                  // showPosts={props.showPosts}
-                  topicID={activeTopicID}
-                  // setActiveBoard={props.setActiveBoard}
-                  boards={boards}
-                />
+                <BoardsCards topicID={activeTopicID} boards={boards} />
 
                 <Card
                   className="left-cards cardColor"
@@ -129,9 +123,7 @@ function LeftSidePanel(props) {
         setShow={setShowCreateTopicModal}
         usersProfile={props.usersProfile}
         setActiveTopicID={props.setActiveTopicID}
-        getProfileAndTopics={props.getProfileAndTopics}
       />
     </>
   );
 }
-export default LeftSidePanel;

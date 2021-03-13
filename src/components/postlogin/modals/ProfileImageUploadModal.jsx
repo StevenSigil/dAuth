@@ -1,15 +1,16 @@
 import React, { useState } from "react";
+import { Button, Form, Modal } from "react-bootstrap";
+
 import ImageCropper from "../../../utils/ImageCropper";
 import axiosInstance from "../../../utils/axiosAPI";
 
-import { Button, Form, Modal } from "react-bootstrap";
-
-function ProfileImageUploadModal(props) {
-  const [blob, setBlob] = useState(null);
-  const [inputImg, setInputImg] = useState("");
+export default function ProfileImageUploadModal(props) {
   const show = props.show;
   const setShow = props.setShow;
   const userID = props.userID;
+
+  const [blob, setBlob] = useState(null);
+  const [inputImg, setInputImg] = useState("");
 
   const getBlob = (blob) => {
     // pass blob up from the ImageCropper component - blob is JPEG/PNG at this point.
@@ -46,23 +47,23 @@ function ProfileImageUploadModal(props) {
       })
       .then((res) => {
         console.log(res);
-        resetModal();
+        resetModal(true);
       })
       .catch((err) => console.log(err));
   }
 
-  function resetModal() {
+  function resetModal(refresh = false) {
     // on submit --> close modal, reset profile/images.
     setShow(false);
     setInputImg("");
     setBlob(null);
-    window.location = "/" + userID + "/public"
+    if (refresh) window.location = "/" + userID + "/public";
   }
 
   return (
     <div>
-      <Modal centered show={show} onHide={resetModal}>
-        <Modal.Header closeButton>
+      <Modal animation={false} centered show={show} onHide={resetModal}>
+        <Modal.Header>
           <Modal.Title>Select a new photo</Modal.Title>
         </Modal.Header>
 
@@ -95,6 +96,7 @@ function ProfileImageUploadModal(props) {
                       position: "relative",
                       padding: "0.75rem",
                       height: inputImg ? "auto" : "100%",
+                      width: inputImg ? "auto" : "100%",
                     }}
                   />
 
@@ -116,4 +118,3 @@ function ProfileImageUploadModal(props) {
     </div>
   );
 }
-export default ProfileImageUploadModal;

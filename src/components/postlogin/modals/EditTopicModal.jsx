@@ -4,11 +4,10 @@ import axiosInstance from "../../../utils/axiosAPI";
 import UserSearchModal from "./UserSearchModal";
 import CreateBoardModal from "./CreateBoardModal";
 
-function EditTopicModal(props) {
+export default function EditTopicModal(props) {
   const show = props.show;
   const setShow = props.setShow;
   const topic = props.topic;
-  // const topicAPI = props.topicAPI;
 
   const [newName, setNewName] = useState("");
   const [newDescription, setNewDescription] = useState("");
@@ -42,8 +41,6 @@ function EditTopicModal(props) {
     setNewDescription("");
     setShow(false);
     if (refresh) reload();
-    // topicAPI();
-    // props.setGetTopicForWindow(true);
   }
 
   function handleAddAdmin() {
@@ -59,7 +56,7 @@ function EditTopicModal(props) {
   return (
     <>
       <Modal animation={false} show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>
             {topic.name} <em>edit screen</em>
           </Modal.Title>
@@ -75,7 +72,7 @@ function EditTopicModal(props) {
                 onChange={(e) => setNewName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group>
+            <Form.Group style={{ margin: "1rem 0" }}>
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
@@ -130,7 +127,6 @@ function EditTopicModal(props) {
         show={showUserSearchModal}
         setShow={setShowUserSearchModal}
         topicAPI={props.topicAPI}
-        // handleOtherUserClicked={props.handleOtherUserClicked}
         topicDetails={true}
         topicID={topic.id}
       />
@@ -139,12 +135,8 @@ function EditTopicModal(props) {
         fromNewTopic={false}
         show={showCreateBoardModal}
         setShow={setShowCreateBoardModal}
-        // getProfileAndTopics={props.getProfileAndTopics}
         topicID={topic.id}
-        resetModal={resetModal}
       />
     </>
   );
 }
-
-export default EditTopicModal;

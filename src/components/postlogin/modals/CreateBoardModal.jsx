@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import axiosInstance from "../../../utils/axiosAPI";
 
-function CreateBoardModal(props) {
-  const [boardName, setBoardName] = useState("");
-  const [BoardDescription, setBoardDescription] = useState("");
-
+export default function CreateBoardModal(props) {
   const show = props.show;
   const setShow = props.setShow;
   const topicID = props.topicID;
+
+  const [boardName, setBoardName] = useState("");
+  const [BoardDescription, setBoardDescription] = useState("");
 
   function resetModal(refresh = false) {
     setBoardName("");
@@ -42,7 +42,7 @@ function CreateBoardModal(props) {
 
   return (
     <Modal
-      backdrop="static"
+      backdrop={props.fromNewTopic ? "static" : true}
       keyboard={false}
       animation={false}
       show={show}
@@ -62,7 +62,10 @@ function CreateBoardModal(props) {
               onChange={(e) => setBoardName(e.target.value)}
             />
           </Form.Group>
-          <Form.Group controlId="createBoard-description">
+          <Form.Group
+            controlId="createBoard-description"
+            style={{ marginTop: "1rem" }}
+          >
             <Form.Label>Board Description</Form.Label>
             <Form.Control
               type="text"
@@ -86,5 +89,3 @@ function CreateBoardModal(props) {
     </Modal>
   );
 }
-
-export default CreateBoardModal;

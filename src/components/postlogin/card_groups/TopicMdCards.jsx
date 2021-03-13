@@ -3,7 +3,7 @@ import { Card, Container } from "react-bootstrap";
 
 import XSquareButton from "../../svg-components/XSquareButton";
 
-function TopicMdCards(props) {
+export default function TopicMdCards(props) {
   const topics = props.topicsToRender;
   const editButton = props.editButton;
   const handleEditButtonClick = props.buttonAction;
@@ -59,5 +59,3 @@ function TopicMdCards(props) {
     </>
   );
 }
-
-export default TopicMdCards;

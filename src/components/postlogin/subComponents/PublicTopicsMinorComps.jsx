@@ -10,9 +10,8 @@ import {
 } from "react-bootstrap";
 import axiosInstance from "../../../utils/axiosAPI";
 
-function PublicTopicsAccordian(props) {
+export default function PublicTopicsAccordion(props) {
   const publicTopics = props.publicTopics;
-  // const resetWindowsToActiveTopic = props.resetWindowsToActiveTopic;
   const handleTopicClick = props.handleTopicClick;
 
   function getTopFiveTopicsPerUser(arr) {
@@ -142,4 +141,4 @@ function PublicTopicsAccordian(props) {
   );
 }
 
-export default PublicTopicsAccordian;
+

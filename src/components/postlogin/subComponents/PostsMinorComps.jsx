@@ -1,21 +1,23 @@
+// This is a file for minor components that are used in the 'Post' component (Posts.jsx)
+
 import React, { useState } from "react";
 import { Button, Row, Col, Image } from "react-bootstrap";
+import "../../../static/css/Posts.css";
 
 import axiosInstance from "../../../utils/axiosAPI";
 
 import SubscribeToTopicModal from "../modals/SubscribeToTopicModal";
 
-import "../../../static/css/Posts.css";
-
-// This is a file for minor components that are used in the 'Post' component (Posts.jsx)
+function handleClick(uID) {
+  window.location = "/" + uID + "/public";
+}
 
 export function CurrentUserPost(props) {
   const userID = props.userID;
-  const displayName = props.displayName;
-  const userImage = props.userImage;
-  const dateTime = props.dateTime;
   const message = props.message;
-  const handleOtherUserClicked = props.handleOtherUserClicked;
+  const dateTime = props.dateTime;
+  const userImage = props.userImage;
+  const displayName = props.displayName;
 
   var rawDate = new Date(dateTime);
   rawDate = rawDate.toDateString() + " | " + rawDate.toLocaleTimeString();
@@ -39,13 +41,17 @@ export function CurrentUserPost(props) {
         </Row>
       </Col>
 
-      <Col xs={2} sm={1} className="posts-imageCol">
+      <Col
+        xs={2}
+        sm={1}
+        className="posts-imageCol"
+        onClick={() => handleClick(userID)}
+      >
         <Image
           src={userImage}
           alt={displayName + " image"}
           width="100%"
           height="100%"
-          onClick={() => handleOtherUserClicked(userID)}
           roundedCircle
         />
       </Col>
@@ -55,24 +61,23 @@ export function CurrentUserPost(props) {
 
 export function OtherUserPost(props) {
   const userID = props.userID;
-  const displayName = props.displayName;
-  const userImage = props.userImage;
-  const dateTime = props.dateTime;
   const message = props.message;
-  const handleOtherUserClicked = props.handleOtherUserClicked;
+  const dateTime = props.dateTime;
+  const userImage = props.userImage;
+  const displayName = props.displayName;
 
   var rawDate = new Date(dateTime);
   rawDate = rawDate.toDateString() + " | " + rawDate.toLocaleTimeString();
 
   return (
     <Row noGutters className="singlePost-mainRow-otherUser">
-      <Col xs={2} sm={1} className="posts-imageCol">
-        <Image
-          src={userImage}
-          alt={displayName + " image"}
-          onClick={() => handleOtherUserClicked(userID)}
-          roundedCircle
-        />
+      <Col
+        xs={2}
+        sm={1}
+        className="posts-imageCol"
+        onClick={() => handleClick(userID)}
+      >
+        <Image src={userImage} alt={displayName + " image"} roundedCircle />
       </Col>
 
       <Col xs={7} sm={11} className="posts-postCol-otherUser">
@@ -99,7 +104,8 @@ export function UserNotSubscribedAltView(props) {
   const [showSubscribeModal, setShowSubscribeModal] = useState(false);
 
   function subscribeToTopic() {
-    // If the user is not subscribed, clicking the 'Subscribe' button execute
+    // If the user is not subscribed, clicking the 'Subscribe' button execute this
+
     axiosInstance
       .post("topics/subscriptions/new_subscriber/", { id: props.topicID })
       .then((response) => {

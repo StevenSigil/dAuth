@@ -1,5 +1,6 @@
 import React from "react";
 import { Modal, Button } from "react-bootstrap";
+
 import axiosInstance from "../../../utils/axiosAPI";
 
 function LogoutModal(props) {
@@ -8,6 +9,7 @@ function LogoutModal(props) {
 
   function handleLogout(e) {
     e.preventDefault();
+
     axiosInstance
       .post("users/logout/")
       .then((response) => {
@@ -16,22 +18,22 @@ function LogoutModal(props) {
           sessionStorage.removeItem("Token");
           console.log("Token removed from storage.");
         }
-        window.location = window.location.origin;
+        window.location = "/";
       })
       .catch((error) => console.log(error));
   }
 
   return (
     <Modal animation={false} show={show} onHide={() => setShow(false)}>
-      <Modal.Header closeButton>
+      <Modal.Header>
         <Modal.Title>Logout</Modal.Title>
       </Modal.Header>
       <Modal.Body>Are you sure you want to logout?</Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-danger" size="sm" onClick={handleLogout}>
+        <Button variant="outline-danger" onClick={handleLogout}>
           Logout
         </Button>
-        <Button variant="outline-dark" size="sm" onClick={() => setShow(false)}>
+        <Button variant="outline-dark" onClick={() => setShow(false)}>
           Cancel
         </Button>
       </Modal.Footer>

@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import axiosInstance from "../../utils/axiosAPI";
 import { Form, Button, Col, Row } from "react-bootstrap";
 
-function Register() {
+import axiosInstance from "../../utils/axiosAPI";
+
+export default function Register() {
   const [username, setUsername] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setpassword] = useState("");
-  const [first_name, setfirst_name] = useState("");
-  const [last_name, setlast_name] = useState("");
+  const [password, setPassword] = useState("");
+  const [first_name, set_first_name] = useState("");
+  const [last_name, set_last_name] = useState("");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -46,6 +47,7 @@ function Register() {
         if (response.status === 200) {
           window.location = "/main/";
         }
+        // else {DISPLAY SIGN UP ERROR MSGS}
       })
       .catch((error) => console.log(error));
   }
@@ -91,7 +93,7 @@ function Register() {
                 placeholder="First name"
                 autoComplete="new-first-name"
                 value={first_name}
-                onChange={(e) => setfirst_name(e.target.value)}
+                onChange={(e) => set_first_name(e.target.value)}
               />
               {/* {signupError.password ? signupError.password : null} */}
             </Form.Group>
@@ -103,7 +105,7 @@ function Register() {
                 placeholder="Last name"
                 autoComplete="new-last-name"
                 value={last_name}
-                onChange={(e) => setlast_name(e.target.value)}
+                onChange={(e) => set_last_name(e.target.value)}
               />
               {/* {signupError.password ? signupError.password : null} */}
             </Form.Group>
@@ -128,7 +130,7 @@ function Register() {
               placeholder="Password"
               autoComplete="new-password"
               value={password}
-              onChange={(e) => setpassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
             />
             {/* {signupError.password ? signupError.password : null} */}
           </Form.Group>
@@ -143,4 +145,3 @@ function Register() {
     </div>
   );
 }
-export default Register;

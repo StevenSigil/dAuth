@@ -1,8 +1,9 @@
 import React from "react";
 import { Button, Modal } from "react-bootstrap";
+
 import axiosInstance from "../../../utils/axiosAPI";
 
-function UnsubscribeTopicModal(props) {
+export default function UnsubscribeTopicModal(props) {
   const show = props.show;
   const setShow = props.setShow;
   const userIsAdmin = props.userIsAdmin;
@@ -43,7 +44,7 @@ function UnsubscribeTopicModal(props) {
   return (
     <>
       <Modal animation={false} show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Unsubscribe?</Modal.Title>
         </Modal.Header>
         {userIsAdmin ? <UserIsAdmin /> : null}
@@ -62,4 +63,4 @@ function UnsubscribeTopicModal(props) {
     </>
   );
 }
-export default UnsubscribeTopicModal;
+

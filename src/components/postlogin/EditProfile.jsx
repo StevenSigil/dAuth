@@ -15,7 +15,7 @@ import NavBar from "./NavBar";
 import RightSidePanel from "./RightSidePanel";
 import EditProfileForm from "./forms/EditProfileForm";
 
-function EditProfile() {
+export default function EditProfile() {
   // User info.
   const [userDetails, setUserDetails] = useState(null);
   const [curUser, setCurUser] = useState("");
@@ -311,7 +311,6 @@ function EditProfile() {
           setShow={setShowUpdatePictureModal}
         />
 
-        {/* TODO: Test this */}
         <UnsubscribeTopicModal
           show={showUnsubscribeModal}
           setShow={setShowUnsubscribeModal}
@@ -321,5 +320,3 @@ function EditProfile() {
     );
   } else return null;
 }
-
-export default EditProfile;

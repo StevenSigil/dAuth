@@ -5,10 +5,10 @@ import XSquareButton from "../../svg-components/XSquareButton";
 
 import DeleteBoardModal from "../modals/DeleteBoardModal";
 
-function BoardsCards(props) {
+export default function BoardsCards(props) {
   // Standardizes and reuses a series of cards, formatted for basic Board info.
-  const boards = props.boards;
 
+  const boards = props.boards;
   const [showDeleteBoardModal, setShowDeleteBoardModal] = useState(false);
 
   const checkIfUserIsAdmin = props.checkIfUserIsAdmin
@@ -67,4 +67,4 @@ function BoardsCards(props) {
   }
 }
 
-export default BoardsCards;
+

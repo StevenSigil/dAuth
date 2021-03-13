@@ -5,14 +5,10 @@
   left: 1%;
   min-height: inherit;
   width: 95%;
-
-  /* border: 2px solid white; */
 }
 
 .area2-lsp {
-  /* display: inline-block; */
   position: absolute;
-  /* max-height: 98vh; */
   min-height: 100%;
   top: 0;
   width: 100%;
@@ -20,7 +16,6 @@
   overflow-x: hidden;
   background-color: #393e46;
   text-align: center;
-  /* border: 2px solid blue; */
 }
 .area2-lsp > .row {
   background-color: #222831;
@@ -50,15 +45,11 @@
 .area2-inner-lsp {
   display: inline-block;
   position: relative;
-  /* max-height: inherit; */
-  /* min-height: 84vh; */
   width: 90%;
   right: 0;
-  /* padding-bottom: 10rem; */
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  /* border: 2px solid greenyellow; */
 }
 .area2-inner-lsp::-webkit-scrollbar {
   display: none;
@@ -77,8 +68,6 @@
 .left-cards {
   text-align: start;
   margin: auto;
-  /* margin-bottom: 1px; */
-  /* width: 18rem; */
 }
 .left-cards-nowrapText {
   overflow: hidden;
@@ -107,22 +96,3 @@
   color: #b55400;
   justify-content: center;
 }
-/* Left side panel Topic Cards area */
-/* .area2-lsp {
-    display: inline-block;
-    max-height: inherit;
-    min-height: inherit;
-    height: auto;
-    max-width: 95%;
-    background-color: #222831;
-    flex-grow: 1;
-  } */
-
-/* .area2-inner-lsp {
-    display: block;
-    max-height: 80vh;
-    min-height: 11rem;
-    margin-right: auto;
-    margin-left: auto;
-    width: auto;
-  } */

@@ -4,12 +4,10 @@ import { Modal, Container, Button } from "react-bootstrap";
 export default function UserSearchConfirmModal(props) {
   const show = props.show;
   const onHide = props.hide;
-  // const setGetFriends = props.setGetFriends;
 
   function resetAndClose() {
     onHide(true);
     window.location.reload();
-    // setGetFriends(true);
   }
 
   return (

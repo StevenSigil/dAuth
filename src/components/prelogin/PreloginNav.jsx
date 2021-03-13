@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-
 import { Nav, Navbar, Container, Button } from "react-bootstrap";
 import logo from "../../static/svg/logo.svg";
 
 import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
 
-function PreLoginNav() {
+export default function PreLoginNav() {
   const [hideReactLogo, setHideReactLogo] = useState(false);
 
   function handleLogout() {
@@ -61,4 +60,4 @@ function PreLoginNav() {
   );
 }
 
-export default PreLoginNav;
+

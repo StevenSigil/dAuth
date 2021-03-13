@@ -13,7 +13,7 @@ function EditProfileModal(props) {
 
   return (
     <>
-      <Modal show={show} onHide={handleClick}>
+      <Modal animation={false} show={show} onHide={handleClick}>
         <Modal.Header>
           <Modal.Title>Profile Saved.</Modal.Title>
         </Modal.Header>

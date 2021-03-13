@@ -1,34 +1,28 @@
 import React, { useState, useEffect } from "react";
 
+import { Col, Row, Container, Card, Button } from "react-bootstrap";
 import "../../static/css/TopicDetails.css";
 import "../../static/css/Main.css";
-import { Col, Row, Container, Card, Button } from "react-bootstrap";
+
 import { ReactComponent as EditPencil } from "../../static/svg/pencil-square.svg";
 import { ReactComponent as CheckCircle } from "../../static/svg/check2-circle.svg";
 
 import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
 
-import NavBar from "./NavBar";
 import UsersCards from "./card_groups/UsersCards";
 import BoardsCards from "./card_groups/BoardsCards";
-import LeftSidePanel from "./LeftSidePanel";
-import RightSidePanel from "./RightSidePanel";
+
 import EditTopicModal from "./modals/EditTopicModal";
 import UserSearchModal from "./modals/UserSearchModal";
 import SubscribeToTopicModal from "./modals/SubscribeToTopicModal";
 import UnsubscribeTopicModal from "./modals/UnsubscribeTopicModal";
 
-function TopicDetails(props) {
-  // const user_id = props.user_id;
-  const activeTopicID = props.activeTopicID;
+import NavBar from "./NavBar";
+import LeftSidePanel from "./LeftSidePanel";
+import RightSidePanel from "./RightSidePanel";
 
-  // const hideTopicDetails = props.hideTopicDetails;
-  // const setHideTopicDetails = props.setHideTopicDetails;
-
-  // const getTopicForWindow = props.getTopicForWindow;
-  // const setGetTopicForWindow = props.setGetTopicForWindow;
-  // const handleOtherUserClicked = props.handleOtherUserClicked;
-
+export default function TopicDetails(props) {
+  const [userID, setUserID] = useState("");
   const [topic, setTopic] = useState(null);
   const [boards, setBoards] = useState(null);
 
@@ -38,9 +32,6 @@ function TopicDetails(props) {
   const [showUnsubscribeModal, setShowUnsubscribeModal] = useState(false);
 
   const topicID = props.match.params.id;
-
-  // const [topicID, setTopicID] = useState(props.match.params.id);
-  const [userID, setUserID] = useState("");
 
   useEffect(() => {
     getAndSetToken();
@@ -72,8 +63,6 @@ function TopicDetails(props) {
       .then((response) => {
         console.log(response);
         setShowSubscribeModal(true);
-        // topicAPI();
-        // props.getProfileAndTopics(true);
       })
       .catch((error) => console.log(error));
   }
@@ -89,12 +78,8 @@ function TopicDetails(props) {
       .catch((error) => console.log(error));
   }
 
-  //   useEffect(() => {
-  //     if (activeTopicID === "") return () => resetWindow();
-  //   });
-
   useEffect(() => {
-    // 'topicAPI()' then gets boards on topic -> on render and on user defined changes
+    // Retrieves the boards on topic -> on render and on user defined changes
     axiosInstance
       .get("topics/SingleTopicBoardsUsersView/" + topicID + "/")
       .then((response) => {
@@ -110,22 +95,13 @@ function TopicDetails(props) {
         setBoards(response.data.boards);
       })
       .catch((error) => console.log(error));
-  }, [activeTopicID, topicID]);
+  }, [topicID]);
 
   function getDateCreated(dateTime) {
     // Formats the dateTime of the topic
     let dt = new Date(dateTime);
     return dt.toDateString();
   }
-
-  // function resetWindow() {
-  //   // Resets and closes this componenet(window).
-  //   setShowEditTopicModal(false);
-  //   setShowSubscribeModal(false);
-  //   setShowUnsubscribeModal(false);
-  //   setTopic(null);
-  //   setHideTopicDetails(!hideTopicDetails);
-  // }
 
   function SubscribeButton() {
     // Componenet for the subscribe button depending on if the
@@ -231,7 +207,6 @@ function TopicDetails(props) {
                         </Row>
                         <UsersCards
                           usersList={topic.topic_admins}
-                          // handleOtherUserClicked={handleOtherUserClicked}
                           activeWindow="TopicDeatils"
                         />
                       </div>
@@ -244,7 +219,6 @@ function TopicDetails(props) {
                       <div className="boards-innerdiv-td3">
                         <UsersCards
                           usersList={topic.users_subscribed}
-                          // handleOtherUserClicked={handleOtherUserClicked}
                           activeWindow="TopicDeatils"
                         />
                       </div>
@@ -281,18 +255,13 @@ function TopicDetails(props) {
                 setShow={setShowEditTopicModal}
                 topicAPI={topicAPI}
                 topicID={topic.id} // Users search modal props
-                // handleOtherUserClicked={handleOtherUserClicked}
-                // setGetTopicForWindow={setGetTopicForWindow}
-                // getProfileAndTopics={props.getProfileAndTopics}
               />
 
               <UnsubscribeTopicModal
                 activeTopicID={topic.id}
                 show={showUnsubscribeModal}
                 setShow={setShowUnsubscribeModal}
-                // resetUserDetailsForm={resetWindow}
                 userIsAdmin={() => checkIfUserIsAdmin(topic)}
-                // getProfileAndTopics={props.getProfileAndTopics}
               />
 
               <UserSearchModal
@@ -301,7 +270,6 @@ function TopicDetails(props) {
                 topicDetails={true}
                 show={showUserSearchModal}
                 setShow={setShowUserSearchModal}
-                // handleOtherUserClicked={handleOtherUserClicked}
               />
             </Col>
 
@@ -313,4 +281,4 @@ function TopicDetails(props) {
   ) : null;
 }
 
-export default TopicDetails;
+

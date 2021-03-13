@@ -5,18 +5,18 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./static/css/App.css";
 
 import PreLoginNav from "./components/prelogin/PreloginNav";
-import Login from "./components/prelogin/Login";
 import Welcome from "./components/prelogin/Welcome";
-import TopicDetails from "./components/postlogin/TopicDetails";
-
-import Main from "./components/postlogin/Main";
-import UsersPublicProfile from "./components/postlogin/UsersPublicProfile";
-import EditProfile from "./components/postlogin/EditProfile";
-import Posts from "./components/postlogin/Posts";
-import PublicTopics from "./components/postlogin/PublicTopics";
+import Login from "./components/prelogin/Login";
 import Register from "./components/prelogin/Register";
 
-function App() {
+import Main from "./components/postlogin/Main";
+import TopicDetails from "./components/postlogin/TopicDetails";
+import PublicTopics from "./components/postlogin/PublicTopics";
+import Posts from "./components/postlogin/Posts";
+import UsersPublicProfile from "./components/postlogin/UsersPublicProfile";
+import EditProfile from "./components/postlogin/EditProfile";
+
+export default function App() {
   return (
     <BrowserRouter basename="/">
       <div className="App">
@@ -52,5 +52,3 @@ function App() {
     </BrowserRouter>
   );
 }
-
-export default App;

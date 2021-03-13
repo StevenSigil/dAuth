@@ -6,8 +6,6 @@
   right: 1%;
   min-height: inherit;
   width: 95%;
-
-  /* border: 2px solid white; */
 }
 
 .area2-rsp1 {
@@ -21,8 +19,6 @@
   overflow-x: hidden;
   background-color: #393e46;
   text-align: center;
-
-  /* border: 2px solid blue; */
 }
 
 .area2-rsp1 > .container {
@@ -31,10 +27,7 @@
   max-width: 90%;
   min-height: 10vh;
   margin: 2% auto 0.75rem auto;
-  /* padding-top: 5%;
-    padding-bottom: 5%; */
   border-bottom: 1px solid #b55400;
-  /* border-top: 1px solid #b55400; */
 }
 .area2-rsp1 h2 {
   display: block;
@@ -50,7 +43,6 @@
   overflow-x: hidden;
   background-color: #393e46;
   text-align: center;
-  /* border: 2px solid blue; */
 }
 .area2-rsp2 > .container {
   background-color: #222831;
@@ -58,8 +50,6 @@
   max-width: 90%;
   min-height: 10vh;
   margin: 2% auto 0.75rem auto;
-  /* padding-top: 5%;
-    padding-bottom: 5%; */
   border-bottom: 1px solid #b55400;
   border-top: 1px solid #b55400;
 }
@@ -78,7 +68,6 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  /* border: 2px solid greenyellow; */
 }
 .area2-inner-rsp::-webkit-scrollbar {
   display: none;
@@ -87,6 +76,4 @@
 .area2-inner-rsp div {
   margin-left: auto;
   margin-right: auto;
-  /* border-left: 1px solid #222831;
-    border-right: 1px solid #222831; */
 }

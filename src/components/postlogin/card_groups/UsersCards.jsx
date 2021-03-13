@@ -3,19 +3,20 @@ import { Card, Col, Row, Button, Image } from "react-bootstrap";
 
 import { ReactComponent as CheckMarkSVG } from "../../../static/svg/check2-circle.svg";
 
-function UsersCards(props) {
+export default function UsersCards(props) {
   // standardizes and reuses a series of cards, formatted for a user's basic info
+
   const usersList = props.usersList;
   const activeWindow = props.activeWindow;
   const setFriendCardUserID = props.setFriendCardUserID;
-  // const handleOtherUserClicked = props.handleOtherUserClicked;
   const setShowUserManagerModal = props.setShowUserManagerModal;
 
   const [smallCol, setSmallCol] = useState(false);
-  const [showSecondayButton, setShowSecondaryButton] = useState(false);
+  const [showSecondaryButton, setShowSecondaryButton] = useState(false);
 
-  // Displays the Manage button on the current user's profile to edit friends.
   useEffect(() => {
+    // Displays the Manage button on the below pages to edit the relation to other user.
+
     if (
       activeWindow === "currentUser" ||
       activeWindow === "UserSearchModal" ||
@@ -30,7 +31,6 @@ function UsersCards(props) {
   }, [activeWindow]);
 
   function handleCardClick(id) {
-    // handleOtherUserClicked(id);
     if (activeWindow === "UserSearchModal") props.resetModal();
     window.location = "/" + id + "/public";
   }
@@ -84,7 +84,7 @@ function UsersCards(props) {
                       {/* 'Manage' & 'Add' buttons */}
                       <Col
                         xs={2}
-                        hidden={!showSecondayButton}
+                        hidden={!showSecondaryButton}
                         className="my-auto"
                       >
                         <Button
@@ -111,5 +111,3 @@ function UsersCards(props) {
     </div>
   );
 }
-
-export default UsersCards;

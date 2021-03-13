@@ -11,8 +11,6 @@ import NavBar from "./NavBar";
 import LeftSidePanel from "./LeftSidePanel";
 import RightSidePanel from "./RightSidePanel";
 
-// import SubscribeToTopicModal from "./modals/SubscribeToTopicModal";
-
 import {
   CurrentUserPost,
   OtherUserPost,
@@ -20,13 +18,13 @@ import {
 } from "./subComponents/PostsMinorComps";
 
 export default function Posts(props) {
-  const boardID = props.match.params.boardID;
+  const [user, setUser] = useState(null);
+
+  const boardID = props.match.params.boardID;    
+  const [postsList, setPostsList] = useState([]);
   const [boardDetails, setBoardDetails] = useState(null);
 
-  const [postsList, setPostsList] = useState([]);
-  const [userCanView, setUserCanView] = useState(false); // Change back to false
-  const [user, setUser] = useState(null);
-  // const [usersSubscriptions, setUsersSubscriptions] = useState([]);
+  const [userCanView, setUserCanView] = useState(false);
 
   const [inputText, setInputText] = useState("");
 
@@ -136,7 +134,6 @@ export default function Posts(props) {
                                   userImage={post.posting_user.image}
                                   dateTime={post.date_time_created}
                                   message={post.message}
-                                  // Click on picture -> go to profile
                                 />
                               </div>
                             );
@@ -150,7 +147,6 @@ export default function Posts(props) {
                                   dateTime={post.date_time_created}
                                   userImage={post.posting_user.image}
                                   message={post.message}
-                                  // Click on picture -> go to profile
                                 />
                               </div>
                             );

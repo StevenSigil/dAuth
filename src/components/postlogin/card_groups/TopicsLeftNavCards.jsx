@@ -4,18 +4,18 @@ import { Card, Col, Row, Button } from "react-bootstrap";
 import { ReactComponent as RightCarrot } from "../../../static/svg/caret-right.svg";
 import "../../../static/css/LeftSidePanel.css";
 
-function TopicsLeftNavCards(props) {
+export default function TopicsLeftNavCards(props) {
   const open = props.open;
   const setOpen = props.setOpen;
   const propsTopics = props.topics;
-
   const setActiveTopicID = props.setActiveTopicID;
+  const setActiveTopicName = props.setActiveTopicName;
 
   function handleTopicMainClick(topic) {
     setActiveTopicID(topic.id);
     setOpen(!open);
     if (props.setActiveTopicName) {
-      props.setActiveTopicName(topic.name);
+      setActiveTopicName(topic.name);
     }
   }
 
@@ -59,4 +59,3 @@ function TopicsLeftNavCards(props) {
     </div>
   ) : null;
 }
-export default TopicsLeftNavCards;

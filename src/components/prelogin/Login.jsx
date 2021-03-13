@@ -5,15 +5,13 @@ import axiosInstance, {
 } from "../../utils/axiosAPI";
 import { Form, Button } from "react-bootstrap";
 
-function Login(props) {
-  if (props.id) {
-    console.log(props.id);
-  }
+export default function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+
     axiosInstance
       .post("users/login/", { email, password }, { with_credentials: true })
       .then((response) => {
@@ -24,9 +22,10 @@ function Login(props) {
         if (response.status === 200) {
           getAndSetToken();
           if (checkForToken) {
-            window.location = "/main"; // CHANGE TO MAIN WHEN SET
+            window.location = "/main";
           }
         } else {
+          // Resets the form - TODO: DISPLAY ERROR MSG
           setEmail("");
           setPassword("");
         }
@@ -73,5 +72,3 @@ function Login(props) {
     </div>
   );
 }
-
-export default Login;

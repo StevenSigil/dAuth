@@ -1,22 +1,24 @@
 import React, { useState } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button } from "react-bootstrap";
+
 import axiosInstance from "../../../utils/axiosAPI";
+
 import UsersCards from "../card_groups/UsersCards";
+import UserSearchForm from "../forms/UserSearchForm";
 import UserSearchConfirmModal from "./UserSearchConfirmModal";
 
-function UserSearchModal(props) {
+export default function UserSearchModal(props) {
   const show = props.show;
   const setShow = props.setShow;
   const topicDetails = props.topicDetails;
-  // const getUsersFriends = props.getUsersFriends;
-  // const handleOtherUserClicked = props.handleOtherUserClicked;
+
   const [searchText, setSearchText] = useState("");
   const [returnedUsersList, setReturnedUsersList] = useState(null);
   const [showAddFriendConf, setShowAddFriendConf] = useState(false);
 
   function handleChange(text) {
-    // TODO: Update the url name for this api request.
     setSearchText(text);
+
     axiosInstance
       .get("users/user-search/?search=" + text)
       .then((response) => setReturnedUsersList(response.data))
@@ -29,7 +31,6 @@ function UserSearchModal(props) {
         .post("profiles/public/add_friend/", { id: userID })
         .then((response) => {
           console.log(response);
-          // getUsersFriends();
           setShowAddFriendConf(true);
           setShow(false);
         })
@@ -61,33 +62,24 @@ function UserSearchModal(props) {
   return (
     <>
       <Modal scrollable animation={false} show={show} onHide={resetModal}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Search for a user</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
-            <Form.Group controlId="user-search">
-              <Form.Label>Enter a username</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter a username to search"
-                value={searchText}
-                // onChange={(e) => setSearchText(e.target.value)}
-                onChange={(e) => handleChange(e.target.value)}
+          <UserSearchForm handleChange={handleChange} searchText={searchText} />
+
+          <div style={{ marginTop: "1rem", width: 'inherit' }}>
+            {returnedUsersList ? (
+              <UsersCards
+                usersList={returnedUsersList}
+                activeWindow={"UserSearchModal"}
+                resetModal={resetModal}
+                setFriendCardUserID={
+                  topicDetails === true ? handleAddTopicAdmin : handleAddFriend
+                }
               />
-            </Form.Group>
-          </Form>
-          {returnedUsersList ? (
-            <UsersCards
-              usersList={returnedUsersList}
-              // handleOtherUserClicked={handleOtherUserClicked}
-              activeWindow={"UserSearchModal"}
-              resetModal={resetModal}
-              setFriendCardUserID={
-                topicDetails === true ? handleAddTopicAdmin : handleAddFriend
-              }
-            />
-          ) : null}
+            ) : null}
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button
@@ -102,9 +94,10 @@ function UserSearchModal(props) {
         </Modal.Footer>
       </Modal>
 
-      <UserSearchConfirmModal show={showAddFriendConf} hide={setShowAddFriendConf} />
+      <UserSearchConfirmModal
+        show={showAddFriendConf}
+        hide={setShowAddFriendConf}
+      />
     </>
   );
 }
-
-export default UserSearchModal;

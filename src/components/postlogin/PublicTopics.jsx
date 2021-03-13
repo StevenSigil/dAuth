@@ -4,18 +4,18 @@ import "../../static/css/PublicTopics.css";
 import { Row, Container, Col, Form } from "react-bootstrap";
 
 import axiosInstance from "../../utils/axiosAPI";
+
 import TopicMdCards from "./card_groups/TopicMdCards";
 import UsersCards from "./card_groups/UsersCards";
+
+import PublicTopicsAccordion from "./subComponents/PublicTopicsMinorComps";
 import UserSearchConfirmModal from "./modals/UserSearchConfirmModal";
+
 import NavBar from "./NavBar";
 import LeftSidePanel from "./LeftSidePanel";
 import RightSidePanel from "./RightSidePanel";
-import PublicTopicsAccordian from "./subComponents/PublicTopicsMinorComps";
 
-function PublicTopics(props) {
-  // const showTopicDetails = props.showTopicDetails;
-  // const setActiveTopicID = props.setActiveTopicID;
-
+export default function PublicTopics(props) {
   const [publicTopics, setPublicTopics] = useState([]);
   const [topicSearchText, setTopicSearchText] = useState("");
   const [returnedTopicList, setReturnedTopicList] = useState(null);
@@ -31,20 +31,9 @@ function PublicTopics(props) {
   }
 
   function handleTopicClick(topicID) {
-    // Switches the Main(page) to Topic Details
-    // setActiveTopicID(topicID);
-    // setTopicSearchText("");
-    // showTopicDetails();
     setTopicSearchText("");
     window.location = "/topics/" + topicID + "/";
   }
-
-  // function resetWindowsToActiveTopic() {
-  //   // Closes this componenet and resets the active topic.
-  //   props.setActiveTopicID("");
-  //   props.getProfileAndTopics();
-  //   props.setHidePublicTopics(true);
-  // }
 
   useEffect(() => {
     // Initial topic api call
@@ -64,7 +53,6 @@ function PublicTopics(props) {
   const [showAddFriendConf, setShowAddFriendConf] = useState(false);
 
   function handleUserSearchChange(text) {
-    // TODO: Update the url name for this api request.
     setUserSearchText(text);
     axiosInstance
       .get("users/user-search/?search=" + text)
@@ -77,7 +65,6 @@ function PublicTopics(props) {
       .post("profiles/public/add_friend/", { id: userID })
       .then((response) => {
         console.log(response);
-        // props.getUsersFriends();
         setShowAddFriendConf(true);
       })
       .catch((error) => console.log(error));
@@ -129,9 +116,8 @@ function PublicTopics(props) {
                       }}
                     >
                       <h2>Popular topics</h2>
-                      <PublicTopicsAccordian
+                      <PublicTopicsAccordion
                         publicTopics={publicTopics}
-                        // resetWindowsToActiveTopic={resetWindowsToActiveTopic}
                         handleTopicClick={handleTopicClick}
                       />
                     </div>
@@ -242,4 +228,4 @@ function PublicTopics(props) {
   );
 }
 
-export default PublicTopics;
+

@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 import axiosInstance from "../../../utils/axiosAPI";
+
 import CreateBoardModal from "./CreateBoardModal";
 
-function CreateTopicModal(props) {
+export default function CreateTopicModal(props) {
   const show = props.show;
   const setShow = props.setShow;
 
@@ -38,7 +39,7 @@ function CreateTopicModal(props) {
   return (
     <>
       <Modal animation={false} show={show} onHide={resetModal}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>Create a new topic</Modal.Title>
         </Modal.Header>
         <Modal.Body>
@@ -52,7 +53,10 @@ function CreateTopicModal(props) {
                 onChange={(e) => setNewName(e.target.value)}
               />
             </Form.Group>
-            <Form.Group controlId="NewTopic-Description">
+            <Form.Group
+              controlId="NewTopic-Description"
+              style={{ marginTop: "1rem" }}
+            >
               <Form.Label>Description</Form.Label>
               <Form.Control
                 type="text"
@@ -82,5 +86,3 @@ function CreateTopicModal(props) {
     </>
   );
 }
-
-export default CreateTopicModal;

@@ -8,7 +8,7 @@ export default function UserNotLoggedInModal(props) {
 
   function handleClose() {
     setShow(false);
-    window.location = "/login/"
+    window.location = "/login/";
   }
   return (
     <>
@@ -19,7 +19,7 @@ export default function UserNotLoggedInModal(props) {
         show={show}
         onHide={handleClose}
       >
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>You are not signed in</Modal.Title>
         </Modal.Header>
         <Modal.Body>

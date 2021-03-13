@@ -19,6 +19,7 @@ function DeleteBoardModal(props) {
 
   return (
     <Modal
+      animation={false}
       className="delete-board-modal"
       show={show}
       onHide={() => setShow(false)}
@@ -30,10 +31,10 @@ function DeleteBoardModal(props) {
         <p>This action can not be undone.</p>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="outline-danger" size="sm" onClick={handleDelete}>
+        <Button variant="outline-danger" onClick={handleDelete}>
           Delete
         </Button>
-        <Button variant="outline-dark" size="sm" onClick={() => setShow(false)}>
+        <Button variant="outline-dark" onClick={() => setShow(false)}>
           Cancel
         </Button>
       </Modal.Footer>

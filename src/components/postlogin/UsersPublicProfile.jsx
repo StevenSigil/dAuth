@@ -18,21 +18,14 @@ import NavBar from "./NavBar";
 import RemoveFriendModal from "./modals/RemoveFriendModal";
 import UserSearchConfirmModal from "./modals/UserSearchConfirmModal";
 
-function UsersPublicProfile(props) {
-  // const currentUsersUsername = props.currentUsersUsername;
-
-  // const showTopicDetails = props.showTopicDetails;
-  // const setWindowIsShowing = props.setWindowIsShowing;
-  // const setActiveTopicID = props.setActiveTopicID;
-
+export default function UsersPublicProfile(props) {
   const [viewingUserID, setViewingUserID] = useState("");
   const [curUserID, setCurUserID] = useState("");
-  // const [curUserFriends, setCurUserFriends] = useState([]);
 
   const [userDetails, setUserDetails] = useState(null);
   const [activeWindow, setActiveWindow] = useState("otherUser");
 
-  const [friendsList, setFriendsList] = useState([]); // Assumes origin from 'profile_condensed_serializer'
+  const [friendsList, setFriendsList] = useState([]); // Assumes origin from 'profile_condensed_serializer (API)'
   const [friendCardUserID, setFriendCardUserID] = useState("");
 
   const [publicTopics, setPublicTopics] = useState([]);
@@ -73,17 +66,6 @@ function UsersPublicProfile(props) {
         .catch((error) => console.log(error));
     }
   }, [viewingUserID, setUserDetails, setFriendsList]);
-
-  // useEffect(() => {
-  //   // Retrieves the current users friends list to compare to viewing users friends list.
-  //   axiosInstance
-  //     .get("profiles/public/users_friends/")
-  //     .then((response) => {
-  //       console.log(response);
-  //       setCurUserFriends(response.data);
-  //     })
-  //     .catch((error) => console.log(error));
-  // }, [setCurUserFriends]);
 
   useEffect(() => {
     // Retrieves the Topics a user is subscribed to
@@ -130,10 +112,7 @@ function UsersPublicProfile(props) {
   }
 
   function handleTopicClick(topicID) {
-    // setActiveTopicID(topicID);
-    // showTopicDetails();
-    // setWindowIsShowing(true);
-    window.location = "/topics/" + topicID + "/"
+    window.location = "/topics/" + topicID + "/";
   }
 
   useEffect(() => {
@@ -365,5 +344,3 @@ function UsersPublicProfile(props) {
     </>
   ) : null;
 }
-
-export default UsersPublicProfile;

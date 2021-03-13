@@ -2,8 +2,6 @@
 .postsMain {
   display: block;
   flex-wrap: wrap;
-  /* padding: 5px; */
-  /* position: relative; */
   min-height: inherit;
   background-color: inherit;
 
@@ -22,13 +20,11 @@
   height: 5rem;
   padding-bottom: 0.5rem;
   background-color: #222831;
-  /* border-bottom: 0.2rem solid #393e46; */
 }
 .postWindow-heading h1 {
   padding-bottom: 1rem;
   margin: 0;
   border-bottom: 0.2rem solid #393e46;
-  /* #393e46; */
 }
 
 .row2-outercontainer-posts {
@@ -63,13 +59,6 @@
 }
 
 /* currentUser's single posts */
-
-/* .singlePost-mainRow-currentUser {
-    max-width: 90%;
-    margin: 0.5rem 0 1rem auto;
-    border-top: 1px solid #b55400;
-    border-bottom: 1px solid #b55400;
-  } */
 .posts-postCol-currentUser {
   height: auto;
   max-width: 80%;
@@ -88,7 +77,6 @@
   padding-bottom: 0.25rem;
   display: flex;
   justify-content: flex-end;
-  /* margin-right: 2rem; */
 }
 .postMessage-row-currentUser {
   border-top: 1px dashed #686d74;
@@ -101,13 +89,6 @@
 }
 
 /* otherUser's single posts */
-
-/* .singlePost-mainRow-otherUser {
-    max-width: 90%;
-    margin: 0.5rem auto 0 0;
-    border-top: 1px solid #b55400;
-    border-bottom: 1px solid #b55400;
-  } */
 .posts-postCol-otherUser {
   height: auto;
   max-width: 80%;
@@ -117,7 +98,6 @@
 .posts-postCol-otherUser > .row {
   padding: 0.25rem;
   display: flex;
-  /* align-items: flex-end; */
   justify-content: flex-start;
 }
 .posts-postCol-otherUser p {
@@ -126,7 +106,6 @@
 .postHeader-otherUser > .row {
   padding-bottom: 0.25rem;
   display: flex;
-  /* align-items: flex-end; */
   justify-content: flex-start;
 }
 .postMessage-row-otherUser {
@@ -134,25 +113,10 @@
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* margin-left: 2rem; */
 }
 .postMessage-row-otherUser p {
   margin-left: 2rem;
 }
-
-/* .singlePost-mainRow-otherUser {
-    max-width: 90%;
-    margin: 0.5rem auto 1rem 0;
-    border-top: 1px solid #b55400;
-    border-bottom: 1px solid #b55400;
-  }
-  .singlePost-mainRow-currentUser {
-    max-width: 90%;
-    margin: 0.5rem 0 1rem auto;
-    border-top: 1px solid #b55400;
-    border-bottom: 1px solid #b55400;
-  } */
-
 .singlePost-mainRow-otherUser {
   max-width: 90%;
   margin: 0.5rem auto 0 0;
@@ -164,7 +128,7 @@
   border-top: 1px solid #b55400;
 }
 
-/* user is not subscribed alt display */
+/* user not subscribed alt display */
 .userNotSubscribed-div {
   text-align: center;
   height: inherit;
@@ -185,7 +149,6 @@
 }
 .postSubmitRow div {
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   padding: 0 5px;
 }

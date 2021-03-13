@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 
 import axiosInstance from "../../../utils/axiosAPI";
 
-function RemoveFriendModal(props) {
+export default function RemoveFriendModal(props) {
   const show = props.show;
   const setShow = props.setShow;
   const getUsersFriends = props.getUsersFriends;
@@ -27,19 +27,15 @@ function RemoveFriendModal(props) {
   return (
     <>
       <Modal animation={false} show={show} onHide={() => setShow(false)}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>User manager</Modal.Title>
         </Modal.Header>
         <Modal.Body>Would you like to unfriend this person?</Modal.Body>
         <Modal.Footer>
-          <Button variant="outline-danger" size="sm" onClick={handleUnfriend}>
+          <Button variant="outline-danger" onClick={handleUnfriend}>
             Confirm
           </Button>
-          <Button
-            variant="outline-dark"
-            size="sm"
-            onClick={() => setShow(false)}
-          >
+          <Button variant="outline-dark" onClick={() => setShow(false)}>
             Cancel
           </Button>
         </Modal.Footer>
@@ -47,5 +43,3 @@ function RemoveFriendModal(props) {
     </>
   );
 }
-
-export default RemoveFriendModal;

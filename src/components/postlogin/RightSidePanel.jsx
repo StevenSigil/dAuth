@@ -7,13 +7,10 @@ import UsersCards from "./card_groups/UsersCards";
 
 import "../../static/css/RightSidePanel.css";
 
-function RightSidePanel(props) {
-  // const activeTopicID = props.activeTopicID;
-  // const [getFriends, setGetFriends] = useState(false);
+export default function RightSidePanel(props) {
   const getFriends = props.getFriends;
   const setGetFriends = props.setGetFriends ? props.setGetFriends : null;
 
-  // const [userProfiles, setUserProfiles] = useState([]);
   const [usersFriends, setUsersFriends] = useState([]);
 
   useEffect(() => {
@@ -30,21 +27,12 @@ function RightSidePanel(props) {
     if (getFriends) {
       window.location.reload();
     }
-    // return () => {
-    //   setGetFriends(false);
-    // }
   }, [getFriends, setGetFriends]);
 
   // dynamic styling
   // const [area2Height, setArea2Height] = useState("100%"); // maybe a collapse instead of slicing in half?
   const area2Height = "100%";
   // const [area1Hidden, setArea1Hidden] = useState(true);
-
-  // useEffect(() => {
-  //   if (activeTopicID) {
-  //     return getOtherUsers(activeTopicID);
-  //   }
-  // }, [activeTopicID]);
 
   // function getOtherUsers(topicID) {
   //   console.log("ACTIVE TOPIC: getOtherUsers Response:\n", topicID);
@@ -73,7 +61,7 @@ function RightSidePanel(props) {
 
             <div className="area2-inner-rsp">
               <UsersCards
-                // handleOtherUserClicked={props.handleOtherUserClicked}
+                
                 usersList={userProfiles}
               />
             </div>
@@ -84,10 +72,7 @@ function RightSidePanel(props) {
               <h2>My friends</h2>
             </Container>
             <div className="area2-inner-rsp">
-              <UsersCards
-                // handleOtherUserClicked={props.handleOtherUserClicked}
-                usersList={usersFriends}
-              />
+              <UsersCards usersList={usersFriends} />
             </div>
           </div>
         </div>
@@ -95,4 +80,3 @@ function RightSidePanel(props) {
     </>
   );
 }
-export default RightSidePanel;
