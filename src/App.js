@@ -1,9 +1,5 @@
 import React, { useState } from "react";
-import {
-  Switch,
-  Route,
-  BrowserRouter,
-} from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./static/css/App.css";
@@ -18,10 +14,9 @@ import UsersPublicProfile from "./components/postlogin/UsersPublicProfile";
 import EditProfile from "./components/postlogin/EditProfile";
 import Posts from "./components/postlogin/Posts";
 import PublicTopics from "./components/postlogin/PublicTopics";
+import Register from "./components/prelogin/Register";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
   return (
     <BrowserRouter basename="/">
       <div className="App">
@@ -36,9 +31,12 @@ function App() {
             <Login />
           </Route>
 
-          <Route exact path={"/main"}>
-            <Main />
+          <Route exact path={"/register"}>
+            <PreLoginNav />
+            <Register />
           </Route>
+
+          <Route exact path={"/main"} component={Main} />
 
           <Route path={"/topics/:id"} component={TopicDetails} />
 

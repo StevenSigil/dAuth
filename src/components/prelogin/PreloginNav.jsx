@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import { Nav, Navbar, Container, Button } from "react-bootstrap";
 import logo from "../../static/svg/logo.svg";
@@ -6,6 +6,8 @@ import logo from "../../static/svg/logo.svg";
 import axiosInstance, { getAndSetToken } from "../../utils/axiosAPI";
 
 function PreLoginNav() {
+  const [hideReactLogo, setHideReactLogo] = useState(false);
+
   function handleLogout() {
     axiosInstance
       .post("users/logout/")
@@ -17,18 +19,26 @@ function PreLoginNav() {
     getAndSetToken();
   }
 
+  useEffect(() => {
+    if (window.screen.width < 992) {
+      setHideReactLogo(true);
+    }
+  }, []);
+
   return (
     <>
       <Navbar
         sticky="top"
         variant="dark"
         className="prelogin-nav-outer"
+        expand="lg"
       >
-        <Navbar.Brand>d-Auth</Navbar.Brand>
+        <Container fluid style={{ display: "flex", alignItems: "flex-start" }}>
+          <Navbar.Brand>d-Auth</Navbar.Brand>
 
-        <Navbar.Collapse id="prelogin-nav-collapse">
-          <Nav>
-            <Container fluid>
+          <Navbar.Toggle aria-controls="prelogin-nav-collapse" />
+          <Navbar.Collapse id="prelogin-nav-collapse">
+            <Nav>
               <Nav.Link href="/">Home</Nav.Link>
               <Nav.Link href="/login/">Login</Nav.Link>
               <Nav.Link href="/register/">Register</Nav.Link>
@@ -37,11 +47,13 @@ function PreLoginNav() {
               <Button variant="dark" onClick={handleLogout}>
                 Logout
               </Button>
-            </Container>
-          </Nav>
-        </Navbar.Collapse>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
 
-        <Navbar.Brand style={{ padding: 0 }}>
+        <Navbar.Brand
+          style={{ padding: 0, display: hideReactLogo ? "none" : "auto" }}
+        >
           <img src={logo} className="App-logo" alt="logo" />
         </Navbar.Brand>
       </Navbar>
